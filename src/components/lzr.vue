@@ -1,5 +1,5 @@
 <template>
     <div class="lzr">
-        <h1>李兆瑞的项目</h1>
+        <a href="https://github.com/junfeidao/sxproject/tree/develop/src/pages/Li%20zhaorui">xiangmu</a>
     </div>
 </template>

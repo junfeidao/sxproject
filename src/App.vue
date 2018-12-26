@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/lzr">李兆瑞</router-link>
       <!-- <router-link to="/about">About</router-link> -->
       <!-- <router-link to="/qsf">qsf</router-link> -->
     </div>
