@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/lzr">李兆瑞</router-link> |
       <router-link to="/qsf">强少峰</router-link> |
-      <router-link to="/thq">陶豪钦</router-link> |
+      <router-link to="/thq">陶毫钦</router-link> |
       <router-link to="/wzh">王梓航</router-link> |
       <router-link to="/wxq">位星启</router-link> |
       <router-link to="/zgl">朱广龙</router-link> |
