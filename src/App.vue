@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <!-- <router-link to="/about">About</router-link> -->
-      <!-- <router-link to="/qsf">qsf</router-link> -->
+      <router-link to="/lzr">李兆瑞</router-link> |
+      <router-link to="/qsf">强少峰</router-link> |
+      <router-link to="/thq">陶豪钦</router-link> |
+      <router-link to="/wzh">王梓航</router-link> |
+      <router-link to="/wxq">位星启</router-link> |
+      <router-link to="/zgl">朱广龙</router-link> |
     </div>
     <router-view/>
   </div>

@@ -1,22 +1,40 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import lzr from './components/lzr.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    // },
-    // {
-    //   path: '/lzr',
-    //   name: 'lzr',
-    //   component: () => import('./components/lzr.vue')
-    // }
+    {
+      path: '/lzr',
+      name: 'lzr',
+      component: () => import('./components/lzr.vue')
+    },
+    {
+      path: '/qsf',
+      name: 'qsf',
+      component: () => import('./components/qsf.vue')
+    },
+    {
+      path: '/thq',
+      name: 'thq',
+      component: () => import('./components/thq.vue')
+    },
+    {
+      path: '/wzh',
+      name: 'wzh',
+      component: () => import('./components/wzh.vue')
+    },
+    {
+      path: '/wxq',
+      name: 'wxq',
+      component: () => import('./components/wxq.vue')
+    },
+    {
+      path: '/zgl',
+      name: 'zgl',
+      component: () => import('./components/zgl.vue')
+    }
   ]
 })

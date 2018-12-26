@@ -1,10 +1,4 @@
 <template>
-    <div class="ZGL">
-        
+    <div>
     </div>
 </template>
-<script>
-export default {
-    name: 'ZGL'
-}
-</script>

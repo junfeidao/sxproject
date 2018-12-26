@@ -1,10 +1,4 @@
 <template>
-    <div class="WXQ">
-        
+    <div>
     </div>
 </template>
-<script>
-export default {
-    name: 'WXQ'
-}
-</script>
