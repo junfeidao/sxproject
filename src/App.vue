@@ -6,7 +6,7 @@
       <router-link to="/thq">陶毫钦</router-link> |
       <router-link to="/wzh">王梓航</router-link> |
       <router-link to="/wxq">位星启</router-link> |
-      <router-link to="/zgl">朱广龙</router-link> |
+      <router-link to="/zgl">朱广龙</router-link>
     </div>
     <router-view/>
   </div>
@@ -14,20 +14,26 @@
 
 <style lang="scss">
 #app {
+  height: 600px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  justify-content: flex-start;
 }
 #nav {
-  padding: 30px;
+  padding: 20px;
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #22272c;
     &.router-link-exact-active {
       color: #42b983;
     }
   }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 </style>

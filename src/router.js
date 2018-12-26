@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import lzr from './components/lzr.vue'
 
 Vue.use(Router)
 

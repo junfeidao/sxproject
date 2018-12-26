@@ -1,5 +1,15 @@
 <template>
     <div class="wzh">
-        <a href="https://github.com/junfeidao/sxproject/tree/develop/src/pages/Wang%20zihang" target="_blank" rel="noopener noreferrer"><h1>王梓航的项目</h1></a>
+        <a href=""></a><a href=""></a><a href=""></a>
+        <a href="https://github.com/junfeidao/sxproject/tree/develop/src/pages/Wang%20zihang" target="_blank" rel="noopener noreferrer"><h2>王梓航的项目</h2></a>
+        <a href=""></a><a href=""></a>
     </div> 
 </template>
+
+<style>
+    .wzh {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+</style>
