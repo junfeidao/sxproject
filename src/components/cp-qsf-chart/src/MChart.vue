@@ -7,15 +7,11 @@
   var echarts = require("echarts");
   //初始化echart
   export default {
-    //在vue渲染到都没元素时启用回调函数
-    mounted() {
-      this.draw();
-    },
     props:{
       value:{
         // type: Array,
         // default(){
-        //   return []
+          //   return []
         // }
       }
     },
@@ -27,8 +23,8 @@
       draw() {
         // 指定图表的配置项和数据
         var options = {
-            title: {
-              text: '几种衣物的销量图'
+          title: {
+            text: '几种衣物的销量图'
             },
             tooltip: {},
             legend: {
@@ -56,6 +52,7 @@
         this.draw()
       }
     },
+    //在vue渲染到都没元素时启用回调函数
     mounted(){
       this.initChart()
       this.draw()
