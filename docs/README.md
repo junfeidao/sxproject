@@ -1,12 +1,13 @@
+```bash
 ## 学习笔记
 
 每人创建自己的目录
 ###GitFlow 总结归纳
 一些相关概念
-develop 分支：develop 是我们进行开发时所用的分支，一般来说 develop 分支主要用于开发。
-2．Feature 分支：主要进行新功能的开发，是从 develop 分支上拉出来的一个分支，主要用于产品功能的创建和修改，当新功能完成后会合并 develop 上
-3.release 分支：主要用于产品的测试和 bug 一些文档的处理，是从 develop 分支上拉出来的一个分支，当测试或者修改 bug 完成后合并到 master 分支和 develop 分支上
-4.hotfix 分支：故名思议热更新，当发现新 bug 时会进入 release 分支。 5.要理解 git 常用一些命令 比如 什么是暂存区等一些相关概念及一些常见的命令操作
+#### develop 分支：develop 是我们进行开发时所用的分支，一般来说 develop 分支主要用于开发。
+#### Feature 分支：主要进行新功能的开发，是从 develop 分支上拉出来的一个分支，主要用于产品功能的创建和修改，当新功能完成后会合并 develop 上
+#### release 分支：主要用于产品的测试和 bug 一些文档的处理，是从 develop 分支上拉出来的一个分支，当测试或者修改 bug 完成后合并到 master 分支和 develop 分支上
+#### hotfix 分支：故名思议热更新，当发现新 bug 时会进入 release 分支。 5.要理解 git 常用一些命令 比如 什么是暂存区等一些相关概念及一些常见的  ###命令操作
 如 git add 和 git commit git diff git head git log git relog 等
 演示操作流程
 
@@ -174,3 +175,4 @@ render 改写 v-for
 render 简单改写 v-model
 v-model 是 props：value 和@input 的语法糖
 webpack
+```
