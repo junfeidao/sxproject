@@ -12,7 +12,7 @@ export default new Router({
     {
       path: '/qsf',
       name: 'qsf',
-      component: () => import('./components/qsf.vue')
+      component: () => import('./pages/qsf/index.js')
     },
     {
       path: '/thq',
