@@ -18,7 +18,7 @@ export default new Router({
     {
       path: '/thq',
       name: 'thq',
-      component: () => import('./components/thq.vue')
+      component: () => import('@/pages/thq/index.js')
     },
     {
       path: '/wzh',
