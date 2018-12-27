@@ -22,8 +22,8 @@
   </div>
 </template>
   <script>
-import BrokenLineGraph from "@/components/cp-zgl/BrokenLineGraph.vue";
-import zglInput from "@/components/cp-zgl/Input.vue";
+import BrokenLineGraph from "@/components/cp-zgl/src/BrokenLineGraph.vue";
+import zglInput from "@/components/cp-zgl/src/Input.vue";
 
 export default {
   components: {
