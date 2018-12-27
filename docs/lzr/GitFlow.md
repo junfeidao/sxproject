@@ -1,29 +1,29 @@
 ## gitflow主要是一种工作流：使用Git时的一种工作方式，包含分支的建立与合并
-    1.开分支
-    git branch 新分支名字
-    2.切换到新分支
-    git checkout 新分支名字
-    3.创建新分支并切换到新分支
-    git checkout -b 新分支名字
-    4.切换回原分支
-    git checkout 原分支名字
-    5.合并分支
-    git merge 需要合并的分支名
-    6.查看本地分支列表
-    git branch -a
-    7.查看远程分支列表
-    git branch -r
-    8.想远程提交新开的分支
-    git push origin 新分支名字
-    9.删除远程分支
-    git push origin :远程分支名
-    10.删除本地分支
-    git branch 分支名 -d
-    11.强行删除本地分支
-    git branch 分支名 -D
-    12.更新分支列表信息
-    git fetch -p
-    13.TortoiseGit(乌龟git)
+* 开分支
+`git branch` 新分支名字
+* 切换到新分支
+`git checkout` 新分支名字
+* 创建新分支并切换到新分支
+`git checkout -b` 新分支名字
+* 切换回原分支
+`git checkout` 原分支名字
+* 合并分支
+`git merge` 需要合并的分支名
+* 查看本地分支列表
+`git branch -a`
+* 查看远程分支列表
+`git branch -r`
+* 想远程提交新开的分支
+`git push origin` 新分支名字
+* 删除远程分支
+`git push origin` :远程分支名
+* 删除本地分支
+`git branch` 分支名 -d
+* 强行删除本地分支
+`git branch` 分支名 -D
+* 更新分支列表信息
+`git fetch -p`
+* TortoiseGit(乌龟git)
 ## Gitflow分支命名
 ### master
     master分支始终是最稳定的代码分支，我们每一次开发完后发布到市场的代码分支，一个项目的master分支只能有一个（只能从其他分支合并进来，严格禁止在master分支修改代码）
@@ -38,8 +38,8 @@
     hotfix分支是当线上应用出现了重大的BUG，需要发布一个紧急修复版本，这时需要在master分支上拉取一个hotfix分支
     注：当开发完成后，需要将release分支合回develop分支和master分支；当release分支合并到master分支上后，记得在master分支上打一个tag
 ## 分支命名规范
-    1.master：master分支就叫master分支
-    2.develop：develop分支就叫develop分支
-    3.feature：feature_wechat_v2.0.1（v2.0.1 表示当前迭代的版本号，wechat 表示当前迭代的名称）
-    4.release：release 分支的名称我们直接命名为这次需求的版本号，比如：2.0.1
-    5.hotfix: hotfix 分支的命名我们暂时可以按 hotfix_v2.0.2 这种来进行命名，v2.0.2 表示这次修复的版本的版本号
+* master：master分支就叫master分支
+* develop：develop分支就叫develop分支
+* feature：feature_wechat_v2.0.1（v2.0.1 表示当前迭代的版本号，wechat 表示当前迭代的名称）
+* release：release 分支的名称我们直接命名为这次需求的版本号，比如：2.0.1
+* hotfix: hotfix 分支的命名我们暂时可以按 hotfix_v2.0.2 这种来进行命名，v2.0.2 表示这次修复的版本的版本号
