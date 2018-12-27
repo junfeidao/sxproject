@@ -4,8 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/lzr',
       name: 'lzr',
       component: () => import('./components/lzr.vue')
@@ -33,7 +32,7 @@ export default new Router({
     {
       path: '/zgl',
       name: 'zgl',
-      component: () => import('./components/zgl.vue')
+      component: () => import('@/pages/zgl/index.js')
     }
   ]
 })
