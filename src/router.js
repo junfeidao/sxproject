@@ -8,28 +8,23 @@ export default new Router({
       path: '/lzr',
       name: 'lzr',
       component: () => import('./components/lzr.vue')
-    },
-    {
+    },{
       path: '/qsf',
       name: 'qsf',
       component: () => import('./pages/qsf/index.js')
-    },
-    {
+    },{
       path: '/thq',
       name: 'thq',
       component: () => import('@/pages/thq/index.js')
-    },
-    {
+    },{
       path: '/wzh',
       name: 'wzh',
       component: () => import('./components/wzh.vue')
-    },
-    {
+    },{
       path: '/wxq',
       name: 'wxq',
       component: () => import('./components/wxq.vue')
-    },
-    {
+    },{
       path: '/zgl',
       name: 'zgl',
       component: () => import('@/pages/zgl/index.js')
