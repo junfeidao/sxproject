@@ -32,7 +32,7 @@ export default new Router({
     {
       path: '/zgl',
       name: 'zgl',
-      component: () => import('./components/cp-zgl/src/Form.vue')
+      component: () => import('@/pages/zgl/index.js')
     }
   ]
 })
