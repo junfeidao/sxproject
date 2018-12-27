@@ -20,44 +20,42 @@
 
 ### **通过 npm 上安装的 ECharts 会放在 node_modules 目录下。可以直接在项目代码中 require('echarts') 得到 ECharts。**
 
-> ```
-> <div id="main" style="width: 600px;height:400px;"></div>
-> ```
->
-> ```
-> xport default {
->  //在vue渲染到都没元素时启用回调函数
->  mounted() {
->    this.draw();
->  },
->  methods: {
->    draw() {
->       var echarts = require('echarts');
->
->       // 基于准备好的dom，初始化echarts实例
->       var myChart = echarts.init(document.getElementById('main'));
->       // 绘制图表
->       myChart.setOption({
->           title: {
->               text: 'ECharts 入门示例'
->           },
->    t      ooltip: {
->               trigger: "item",
->               formatter: "{a} <br/>{b} : {c} ({d}%)"//显示百分比
->               },//提示框
->           xAxis: {},//X轴线
->           yAxis: {},//Y轴线
->           series: [{
->               type: 'pie',//类型为饼图
->               data: [
->                       {name : "阴天" ,value : 22222}//注意value里面只能放数字，他是根据对比value值的大小来决定所占比的
->                   ]
->               }]
->            });
->         }
->    }
-> }
-> ```
+``` html
+<div id="main" style="width: 600px;height:400px;"></div>
+```
+``` javascript
+export default {
+ //在vue渲染到都没元素时启用回调函数
+ mounted() {
+   this.draw();
+ },
+ methods: {
+   draw() {
+      var echarts = require('echarts');
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+      // 绘制图表
+      myChart.setOption({
+          title: {
+              text: 'ECharts 入门示例'
+          },
+   tooltip: {
+              trigger: "item",
+              formatter: "{a} <br/>{b} : {c} ({d}%)"//显示百分比
+              },//提示框
+          xAxis: {},//X轴线
+          yAxis: {},//Y轴线
+          series: [{
+              type: 'pie',//类型为饼图
+              data: [
+                      {name : "阴天" ,value : 22222}//注意value里面只能放数字，他是根据对比value值的大小来决定所占比的
+                  ]
+              }]
+           });
+        }
+   }
+}
+```
 
 ### **将饼图引入进来后，我们的到了这么一个代码，现在先将我们预设的数据删除，这样我们就可以将我们的数据源 Element ui 中的 table 组件引入进来**
 
