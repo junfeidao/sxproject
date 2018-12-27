@@ -1,9 +1,9 @@
-<a name="0.1.0"></a>
 # 0.1.0 (2018-12-27)
 
 
 ### Bug Fixes
 
+* **components:** 修改六个路由的路径 ([7f50b87](https://github.com/junfeidao/sxproject/commit/7f50b87))
 * **my windows:** 解决 LF 和 CRLF 的冲突 ([70b9a38](https://github.com/junfeidao/sxproject/commit/70b9a38))
 * **pages:** 清理不规范文件 ([116ba25](https://github.com/junfeidao/sxproject/commit/116ba25))
 * **src\App.vue:** 修改错别字 ([5181c9d](https://github.com/junfeidao/sxproject/commit/5181c9d))
