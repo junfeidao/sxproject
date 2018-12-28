@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="box">
+    <lzrline :tableData="getTemperature"></lzrline>
+    <div>
       <el-table
     :data="tableData"
     style="width: 100%">
@@ -21,8 +23,8 @@
       prop="temperature"
       label="温度">
     </el-table-column>
-  </el-table>
-  <lzrline :tableData="getTemperature"></lzrline>
+  </el-table> 
+</div>
   </div>
 </template>
 
@@ -80,3 +82,9 @@ import lzrline from '@/components/cp-lzr/broken-line-graph/index.js'
     }
   };
 </script>
+<style>
+.box{
+  display: flex;
+  flex-direction: row;
+}
+</style>
