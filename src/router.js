@@ -12,12 +12,12 @@ export default new Router({
     {
       path: '/qsf',
       name: 'qsf',
-      component: () => import('./components/qsf.vue')
+      component: () => import('./pages/qsf/index.js')
     },
     {
       path: '/thq',
       name: 'thq',
-      component: () => import('./components/thq.vue')
+      component: () => import('@/pages/thq/index.js')
     },
     {
       path: '/wzh',
@@ -32,7 +32,7 @@ export default new Router({
     {
       path: '/zgl',
       name: 'zgl',
-      component: () => import('./components/zgl.vue')
+      component: () => import('@/pages/zgl/index.js')
     }
   ]
 })
