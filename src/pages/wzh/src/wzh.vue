@@ -3,9 +3,7 @@
     <img alt="Vue logo" src="~@/assets/logo.png">
     <meEcharts :tableData="tableData" msg="Welcome to Your Vue.js App"/>
     <meTable :tableData="tableData"></meTable>
-    <div>
-      <meform @divSub="handleSubInput"></meform>
-    </div>
+    <meform @divSub="handleSubInput"></meform>
   </div>
 </template>
 
