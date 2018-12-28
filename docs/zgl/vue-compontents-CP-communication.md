@@ -23,7 +23,7 @@
 
 ### 代码演示
 
-```bash
+```js
 父组件
 <template>
   <div>
@@ -58,7 +58,7 @@ export default {
 </script>
 ```
 
-```bash
+```js
 子组件
 template>
   <input type="text" placeholder="请输入数字" :value="count" @input="input">
