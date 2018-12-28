@@ -1,36 +1,82 @@
 <template>
-    <div style="width: 600px;height:400px;"></div>
+  <div>
+      <el-table
+    :data="tableData"
+    style="width: 100%">
+    <el-table-column
+      type="index"
+      width="80">
+    </el-table-column>
+    <el-table-column
+      prop="date"
+      label="date"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="week"
+      label="week"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="temperature"
+      label="温度">
+    </el-table-column>
+  </el-table>
+  <lzrline :tableData="getTemperature"></lzrline>
+  </div>
 </template>
+
 <script>
-let echarts=require('echarts');
-export default {
-  data(){
-
-  },
-  methods:{
-      drawLine(){
-      this.myChart.setOption({
-
-        xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [3, 2, 5, 4, 5, 2, 3],
-        type: 'line',
-        areaStyle: {}
-    }]
-
-})
+import lzrline from '@/components/cp-lzr/broken-line-graph/index.js'  
+  export default {
+      components:{
+        lzrline   //es6注册组件 line:line  "broken-line" :brokenLine
+      },
+    data() {
+      return {
+        tableData: [{
+          date: '2018-10-24',
+          week: 'Mon',
+          temperature: 3,
+        }, {
+          date: '2018-10-25',
+          week: 'Tue',
+          temperature: 2,
+        }, {
+          date: '2018-10-26',
+          week: 'Wed',
+          temperature: 5,
+        }, {
+          date: '2018-10-27',
+          week: 'Thu',
+          temperature: 4,
+        }, {
+          date: '2018-10-28',
+          week: 'Fri',
+          temperature: 5,
+        }, {
+          date: '2018-10-29',
+          week: 'Sat',
+          temperature: 2,
+        }, {
+          date: '2018-10-30',
+          week: 'Sun',
+          temperature: 3,
+        }],
       }
-  },
-  mounted(){
-     this.myChart=echarts.init(this.$el);//初始化
-     this.drawLine()
-  }
-}
+    },
+    computed:{
+         getTemperature(){
+          return  this.tableData.map((item)=>{
+              return item.temperature
+          })
+      }
+    },
+    methods: {
+      indexMethod(index) {
+        return index * 2;
+      },
+     
+    }
+  };
 </script>

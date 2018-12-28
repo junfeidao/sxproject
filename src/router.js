@@ -8,7 +8,7 @@ export default new Router({
     {
       path: '/lzr',
       name: 'lzr',
-      component: () => import('./components/lzr.vue')
+      component: () => import('./pages/lzr/index.js')
     },
     {
       path: '/qsf',
