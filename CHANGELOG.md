@@ -5,6 +5,7 @@
 
 * **docs/qsf:** 修改文件命名格式 ([e5b9733](https://github.com/junfeidao/sxproject/commit/e5b9733))
 * **MChart.vue:** 修复Duplicate key 'mounted' ([ffe30e3](https://github.com/junfeidao/sxproject/commit/ffe30e3))
+* **package-lock.json:** 清理未合并的行 ([323f445](https://github.com/junfeidao/sxproject/commit/323f445))
 * **qsf/learngit:** 删除 learngit 中的 pdf 文件 ([8c0b50c](https://github.com/junfeidao/sxproject/commit/8c0b50c))
 
 
