@@ -63,7 +63,7 @@ export default {
 <style>
   .cha {
     width: 600px;
-    height:400px;
+    height: 400px;
     position: relative;
     left: 30px;
     top: 10px
