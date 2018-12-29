@@ -10,11 +10,6 @@ let echarts=require('echarts')
 export default {
   
 
-  // data () {
-  //   return {
-      
-  //   }
-  // },
   mounted(){
      this.myChart=echarts.init(this.$el);
     this.drawLine();

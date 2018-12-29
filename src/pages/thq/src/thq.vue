@@ -53,4 +53,6 @@ import Table from '@/components/cp-thq-table/src/Table.vue'
      display: flex;
      flex-direction:row-reverse;
  }
+
+ 
 </style>
