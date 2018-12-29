@@ -1,7 +1,8 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  // parser: 'babel-eslint',
   parserOptions: {
+    "parser": "babel-eslint",
     sourceType: 'module'
     // allowImportExportEverywhere: true
   },
@@ -10,10 +11,15 @@ module.exports = {
     node: true,
     es6: true,
   },
-  extends: 'eslint:recommended',
+  extends: [
+    // add more generic rulesets here, such as:
+    'eslint:recommended',
+    'plugin:vue/recommended'
+  ],
   // required to lint *.vue files
   plugins: [
-    'html'
+    // 'html'
+    "vue"
   ],
   // check if imports actually resolve
   'settings': {
