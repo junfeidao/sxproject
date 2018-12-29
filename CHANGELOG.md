@@ -1,4 +1,30 @@
-# 0.1.0 (2018-12-27)
+## [0.1.2](https://github.com/junfeidao/sxproject/compare/v0.1.1...v0.1.2) (2018-12-28)
+
+
+### Bug Fixes
+
+* **docs/qsf:** 修改文件命名格式 ([e5b9733](https://github.com/junfeidao/sxproject/commit/e5b9733))
+* **MChart.vue:** 修复Duplicate key 'mounted' ([ffe30e3](https://github.com/junfeidao/sxproject/commit/ffe30e3))
+* **package-lock.json:** 清理未合并的行 ([323f445](https://github.com/junfeidao/sxproject/commit/323f445))
+* **qsf/learngit:** 删除 learngit 中的 pdf 文件 ([8c0b50c](https://github.com/junfeidao/sxproject/commit/8c0b50c))
+
+
+### Features
+
+* **...:** .. ([a69c52d](https://github.com/junfeidao/sxproject/commit/a69c52d))
+* echarts ([88fffb0](https://github.com/junfeidao/sxproject/commit/88fffb0))
+* **pages/qsf:** 完善qsf ([29e183a](https://github.com/junfeidao/sxproject/commit/29e183a))
+* vue笔记 ([73fceac](https://github.com/junfeidao/sxproject/commit/73fceac))
+* 上传图表 ([3a6b191](https://github.com/junfeidao/sxproject/commit/3a6b191))
+* 添加js文件 ([145d998](https://github.com/junfeidao/sxproject/commit/145d998))
+* 表单 ([11c983f](https://github.com/junfeidao/sxproject/commit/11c983f))
+* **111:** 111111 ([4deeab3](https://github.com/junfeidao/sxproject/commit/4deeab3))
+* **222:** 2222 ([7a73be0](https://github.com/junfeidao/sxproject/commit/7a73be0))
+* **444:** 444 ([6ee5e78](https://github.com/junfeidao/sxproject/commit/6ee5e78))
+
+
+
+## [0.1.1](https://github.com/junfeidao/sxproject/compare/c2e99ce...v0.1.1) (2018-12-27)
 
 
 ### Bug Fixes
@@ -16,6 +42,7 @@
 * **docs:** 增加笔记文件夹 ([7f291c7](https://github.com/junfeidao/sxproject/commit/7f291c7))
 * **pages:** 给每个人添加路由并对应到各自的文件夹 ([2dba472](https://github.com/junfeidao/sxproject/commit/2dba472))
 * **pages/:** 初始化页面文件 ([30ff2ec](https://github.com/junfeidao/sxproject/commit/30ff2ec))
+* 试传笔记 ([a49e03c](https://github.com/junfeidao/sxproject/commit/a49e03c))
 
 
 
