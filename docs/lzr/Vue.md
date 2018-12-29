@@ -48,3 +48,7 @@ yarn global aadd @vue/cli
 ![](./note-picture/vue10.png)
 
 `npm run serve`进行项目的启动
+
+## 组件的使用
+* 组件的注册
+在建好的vue项目的main.js文件中引入element组件库`import ElementUI from 'element-ui'`
