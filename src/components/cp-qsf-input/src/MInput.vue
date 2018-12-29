@@ -1,10 +1,12 @@
 <template>
-<div style="margin-top: 15px;">
+<div id="inbox">
+<div style="margin-top: 15px;" class="inp">
     <el-select v-model="select" slot="prepend" placeholder="请选择">
       <el-option v-for="(value,key) in options" :key="key" :label="value" :value="key"></el-option>
     </el-select>
     <el-input placeholder="请输入销量" v-model="input5" class="input-with-select"></el-input>
-    <el-button slot="append" icon="el-icon-upload" @click="divclick">确定</el-button>
+    <el-button class="btn" slot="append" icon="el-icon-upload" @click="divclick">确定</el-button>
+</div>
 </div>
 </template>
 
@@ -44,3 +46,21 @@ export default {
   }
 }
 </script>
+
+<style>
+#inbox {
+  width: 900px;
+  height: 350px;
+  position: absolute;
+  left: 200px;
+}
+.inp {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content:flex-end;
+}
+.btn {
+  height: 40px;
+}
+</style>
