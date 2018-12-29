@@ -25,7 +25,7 @@
     width: 400px;
     height: 407px;
     position: absolute;
-    top: 20px;
+    top: 100px;
     right: 200px;
 }
 </style>
