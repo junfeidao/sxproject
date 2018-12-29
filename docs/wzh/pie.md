@@ -20,12 +20,11 @@
 
 ### **通过 npm 上安装的 ECharts 会放在 node_modules 目录下。可以直接在项目代码中 require('echarts') 得到 ECharts。**
 
-```html
+``` html
 <div id="main" style="width: 600px;height:400px;"></div>
 ```
-
-```javascript
-xport default {
+``` javascript
+export default {
  //在vue渲染到都没元素时启用回调函数
  mounted() {
    this.draw();
@@ -33,7 +32,6 @@ xport default {
  methods: {
    draw() {
       var echarts = require('echarts');
-
       // 基于准备好的dom，初始化echarts实例
       var myChart = echarts.init(document.getElementById('main'));
       // 绘制图表
@@ -41,7 +39,7 @@ xport default {
           title: {
               text: 'ECharts 入门示例'
           },
-         ooltip: {
+   tooltip: {
               trigger: "item",
               formatter: "{a} <br/>{b} : {c} ({d}%)"//显示百分比
               },//提示框
@@ -63,11 +61,11 @@ xport default {
 
 ## **首先要在 main.js 中将 Element UI 引入进来,使用以下语句，注意样式文件需要另外的 import 引入**
 
-```javascript
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
-Vue.use(ElementUI);
-```
+> ```
+> import ElementUI from 'element-ui';
+> import 'element-ui/lib/theme-chalk/index.css';
+> Vue.use(ElementUI);
+> ```
 
 # **注意这两种组件都有两种引入方式，一种为全局引入，一种为按需引入，这里我们使用的都是全局引入**
 
