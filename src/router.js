@@ -7,25 +7,29 @@ export default new Router({
   routes: [{
       path: '/lzr',
       name: 'lzr',
-      component: () => import('./components/lzr.vue')
-    }, {
+      component: () => import('./pages/lzr/index.js')
+    },
+    {
       path: '/qsf',
       name: 'qsf',
       component: () => import('./pages/qsf/index.js')
-    }, {
+    },
+    {
       path: '/thq',
       name: 'thq',
       component: () => import('@/pages/thq/index.js')
-    }, {
+    },
+    {
       path: '/wzh',
       name: 'wzh',
-      component: () => import('@/pages/wzh/index.js')
+      component: () => import('./components/wzh.vue')
     },
     {
       path: '/wxq',
       name: 'wxq',
       component: () => import('./components/wxq.vue')
-    }, {
+    },
+    {
       path: '/zgl',
       name: 'zgl',
       component: () => import('@/pages/zgl/index.js')
