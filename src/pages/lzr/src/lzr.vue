@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <lzrline :table-data="getTemperature" />
+    <Lzrline :table-data="getTemperature" />
     <div>
       <ElTable :data="tableData" style="width: 100%">
         <ElTableColumn type="index" width="80" />
@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import lzrline from '@/components/cp-lzr/broken-line-graph/index.js'
+import Lzrline from '@/components/cp-lzr/broken-line-graph/index.js'
 export default {
   components: {
-    lzrline // es6注册组件 line:line  "broken-line" :brokenLine
+    Lzrline // es6注册组件 line:line  "broken-line" :brokenLine
   },
   data() {
     return {
