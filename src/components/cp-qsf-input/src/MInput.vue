@@ -1,7 +1,7 @@
 <template>
-  <div 
-    style="margin-top: 15px;" 
+  <div
     id="inbox"
+    style="margin-top: 15px;"
   >
     <ElSelect
       slot="prepend"
@@ -22,8 +22,8 @@
       class="input-with-select"
     />
     <ElButton
-      class="btn"
       slot="append"
+      class="btn"
       icon="el-icon-upload"
       @click="divclick"
     >

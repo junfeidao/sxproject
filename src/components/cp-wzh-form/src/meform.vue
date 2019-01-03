@@ -1,8 +1,15 @@
 <template>
   <div style="margin-top: 15px;">
-    <el-input placeholder="请输入销量" v-model="select"></el-input>
-    <el-input placeholder="请输入销量" v-model="input5"></el-input>
-    <el-button slot="append" icon="el-icon-upload" @click="divclick" id="el-button-from">确定</el-button>
+    <ElInput v-model="select" placeholder="请输入销量" />
+    <ElInput v-model="input5" placeholder="请输入销量" />
+    <ElButton
+      id="el-button-from"
+      slot="append"
+      icon="el-icon-upload"
+      @click="divclick"
+    >
+      确定
+    </ElButton>
   </div>
 </template>
 <script>
@@ -11,15 +18,15 @@ export default {
     return {
       input5: "",
       select: ""
-    };
+    }
   },
   methods: {
     divclick: function() {
-      let index = this.select;
-      let val = this.input5;
-      this.$emit("divSub", { index, val });
+      const index = this.select
+      const val = this.input5
+      this.$emit("divSub", { index, val })
     }
   }
-};
+}
 </script>
 

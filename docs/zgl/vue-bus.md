@@ -11,7 +11,7 @@
   - emit 委派
   - on 广播（监听事件）
   - off 停止广播（解除监听）
-  - 注意: 监听应当在 createed 和 mounted 钩子函数中进行监听
+  - 注意: 监听应当在 createed 和 mounted 钩子函数中进行监听.
 
 #### 代码展示
 
