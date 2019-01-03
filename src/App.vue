@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/lzr">李兆瑞</router-link>|
-      <router-link to="/qsf">强少峰</router-link>|
-      <router-link to="/thq">陶毫钦</router-link>|
-      <router-link to="/wzh">王梓航</router-link>|
-      <router-link to="/wxq">位星启</router-link>|
-      <router-link to="/zgl">朱广龙</router-link>
+      <RouterLink to="/lzr">李兆瑞</RouterLink>|
+      <RouterLink to="/qsf">强少峰</RouterLink>|
+      <RouterLink to="/thq">陶毫钦</RouterLink>|
+      <RouterLink to="/wzh">王梓航</RouterLink>|
+      <RouterLink to="/wxq">位星启</RouterLink>|
+      <RouterLink to="/zgl">朱广龙</RouterLink>
     </div>
-    <router-view/>
+    <RouterView />
   </div>
 </template>
 

@@ -1,9 +1,13 @@
 <template>
-  <div style="margin-top: 15px;">
+  <div
+    id="inbox"
+    style="margin-top: 15px;"
+  >
     <ElSelect
       slot="prepend"
       v-model="select"
       placeholder="请选择"
+      class="inp"
     >
       <ElOption
         v-for="(value,key) in options"
@@ -19,6 +23,7 @@
     />
     <ElButton
       slot="append"
+      class="btn"
       icon="el-icon-upload"
       @click="divclick"
     >
@@ -27,14 +32,6 @@
   </div>
 </template>
 
-<style>
-  .el-select .el-input {
-    width: 130px;
-  }
-  .input-with-select .el-input-group__prepend {
-    background-color: #fff;
-  }
-</style>
 <script>
 export default {
   data() {
@@ -63,3 +60,21 @@ export default {
   }
 }
 </script>
+
+<style>
+#inbox {
+  width: 900px;
+  height: 50px;
+  position: absolute;
+  left: 200px;
+  display: flex;
+  justify-content:flex-end;
+}
+.inp {
+  width: 100%;
+  height: 100%;
+}
+.btn {
+  height: 40px;
+}
+</style>
