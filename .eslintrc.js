@@ -28,6 +28,13 @@ module.exports = {
   // add your custom rules here
   //it is base on https://github.com/vuejs/eslint-config-vue
   rules: {
+    "vue/max-attributes-per-line": [1, {
+      "singleline": 3,
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": false
+      }
+    }],
     'accessor-pairs': 2,
     'arrow-spacing': [2, {
       'before': true,
