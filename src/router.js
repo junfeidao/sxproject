@@ -7,7 +7,7 @@ export default new Router({
   routes: [{
     path: '/lzr',
     name: 'lzr',
-    component: () => import('@/pages/lzr/index.js')
+    component: () => import('./pages/lzr/index.js')
   }, {
     path: '/qsf',
     name: 'qsf',
