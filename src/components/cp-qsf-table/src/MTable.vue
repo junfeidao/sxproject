@@ -1,23 +1,23 @@
 <template>
-<div
-  class="tab"  
->
-  <ElTable
-    :data="tableData"
+  <div
+    class="tab"
   >
-    <ElTableColumn
-      prop="name"
-      label="种类"
-      width="180"
-    />
-    <ElTableColumn
-      prop="volume"
-      label="销量"
-      width="180"
-    />
+    <ElTable
+      :data="tableData"
+    >
+      <ElTableColumn
+        prop="name"
+        label="种类"
+        width="180"
+      />
+      <ElTableColumn
+        prop="volume"
+        label="销量"
+        width="180"
+      />
     <!-- <HelloWorld :tableData="tableData3" :slot-scope="scope"></HelloWorld> -->
-  </ElTable>
-</div>
+    </ElTable>
+  </div>
 </template>
 
 <script>
