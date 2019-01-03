@@ -1,46 +1,73 @@
 <template>
-<div id="myChart" style="width: 800px;height:400px;"></div>
-</template> 
+  <div class="box">
+    <ElTable
+      :data="tableData"
+      style="width: 100%"
+    >
+      <ElTableColumn
+        type="index"
+        label="序号"
+        width="50"
+      />
+      <ElTableColumn
+        prop="name"
+        label="种类"
+        width="90"
+      />
+      <ElTableColumn
+        prop="number"
+        label="销量"
+        width="70"
+      />
+    </ElTable>
+    <Table />
+  </div>
+</template>
 
-<script >
-let echarts=require('echarts')
+<script>
+import Table from '@/components/cp-thq-table/src/Table.vue'
+
 export default {
-  // data () {
-  //   return {
-      
-  //   }
-  // },
-  mounted(){
-     this.myChart=echarts.init(this.$el);
-    this.drawLine();
-   
+  components: {
+    Table
   },
-  methods: {
-    drawLine(){
-        // 基于准备好的dom，初始化echarts实例
-        
-        // 绘制图表
-        this.myChart.setOption({
-            title: { 
-              text: 'ECharts 入门示例' 
-            },
-            tooltip: {},
-            legend: {
-                data:['销量']
-            },
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        });
+  data() {
+    return {
+      tableData: [
+        {
+          name: '衬衫',
+          number: '5'
+        },
+        {
+          name: '羊毛衫',
+          number: '20'
+        },
+        {
+          name: '雪纺衫',
+          number: '36'
+        },
+        {
+          name: '裤子',
+          number: '10'
+        },
+        {
+          name: '高跟鞋',
+          number: '10'
+        },
+        {
+          name: '袜子',
+          number: '20'
+        }
+      ]
     }
   }
+
 }
-
 </script>
+<style>
+ .box{
+     display: flex;
+     flex-direction:row-reverse;
+ }
 
+</style>

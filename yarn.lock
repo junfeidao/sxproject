@@ -3119,7 +3119,7 @@ eslint-plugin-vue@^4.7.1:
   dependencies:
     vue-eslint-parser "^2.0.3"
 
-eslint-plugin-vue@^5.0.0-0:
+eslint-plugin-vue@^5.0.0:
   version "5.0.0"
   resolved "http://10.12.102.194:4873/eslint-plugin-vue/-/eslint-plugin-vue-5.0.0.tgz#4a2cc1c0e71ea45e1bd9c1a60f925bfe68bb5710"
   integrity sha1-SizBwOcepF4b2cGmD5Jb/mi7VxA=
