@@ -1,6 +1,5 @@
 <template>
-  <div class="cha">
-  </div>
+  <div class="cha" />
 </template>
 <script >
 // 引入echarts

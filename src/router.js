@@ -11,7 +11,7 @@ export default new Router({
   }, {
     path: '/qsf',
     name: 'qsf',
-    component: () => import('./pages/qsf/index.js')
+    component: () => import('@/pages/qsf/index.js')
   }, {
     path: '/thq',
     name: 'thq',
@@ -24,7 +24,7 @@ export default new Router({
   {
     path: '/wxq',
     name: 'wxq',
-    component: () => import('./components/wxq.vue')
+    component: () => import('@/components/wxq.vue')
   }, {
     path: '/zgl',
     name: 'zgl',

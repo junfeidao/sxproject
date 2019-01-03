@@ -72,7 +72,7 @@ type可以使下列原生构造函数中的一个:
 * Function
 * Symbol
 ## vue有关的绑定
-### 一、v-bind绑定class
+### 一、v-bind绑定class(v-bind可简写为：)
 * 对象的形式
 `<div :class="{text-danger:true}"></div>`
 * 数组形式绑定class
@@ -163,3 +163,5 @@ v-if的作用是控制DOM是否显示
 v-show也是控制dom显示与否的，v-show 没有v-if的多个判断功能，而且v-show是把dom渲染到文档中，只是加了display:none而已。
 ### 七、v-for
 循环，又叫列表渲染，在需要显示多个的标签上加这个。
+### 八、v-on（简写为@）
+表示事件监听

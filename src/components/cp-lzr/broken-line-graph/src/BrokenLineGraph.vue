@@ -1,45 +1,44 @@
 <template>
-    <div class="line" style="width: 600px;height:400px;">
+  <div class="line" style="width: 600px;height:400px;">
     <!-- {{getTemperature}} -->
-    </div>
+  </div>
 </template>
 
 <script>
-let echarts=require('echarts');
+const echarts = require('echarts')
 export default {
-  props:{
-      tableData:{
-          type:Array,
-          default:function(){
-              return []
-          }
+  props: {
+    tableData: {
+      type: Array,
+      default: function() {
+        return []
       }
-  }
-  ,
-  methods:{
-      drawLine(){
+    }
+  },
+  mounted() {
+    this.myChart = echarts.init(this.$el)// 初始化
+    this.drawLine()
+  },
+  methods: {
+    drawLine() {
       this.myChart.setOption({
 
         xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: this.tableData,
-        type: 'line',
-        areaStyle: {}
-    }]
+          type: 'category',
+          boundaryGap: false,
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          data: this.tableData,
+          type: 'line',
+          areaStyle: {}
+        }]
 
-})
-      }
-  },
-  mounted(){
-     this.myChart=echarts.init(this.$el);//初始化
-     this.drawLine()
+      })
+    }
   }
 }
 </script>
