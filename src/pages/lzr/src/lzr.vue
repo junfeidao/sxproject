@@ -30,6 +30,7 @@
 
 <script>
 import lzrline from '@/components/cp-lzr/broken-line-graph/index.js'  
+
   export default {
       components:{
         lzrline   //es6注册组件 line:line  "broken-line" :brokenLine
