@@ -1,15 +1,19 @@
 <template>
-  <div
-    id="main"
-    style="width: 600px;height:400px;"
-  />
+  <div id="main" style="width: 600px;height:400px;" />
 </template>
 
 <script>
 // 导入echar依赖，在node_modules里面，这里说一下import和require的区别，import需要具体到相对地址，而require则不用，会自动安装
 var echarts = require("echarts")
 export default {
-  props: ["tableData"],
+  props: {
+    "tableData": {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
   watch: {
     tableData: function() {
       this.draw()

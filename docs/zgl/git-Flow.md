@@ -18,7 +18,7 @@ develop分支：develop是我们进行开发时所用的分支，一般来说dev
 
 ```bash
 1).首先先创建一个本地仓库  git init
-2).在maste分支上创建一个名为develop 的分支 git checkout –b develop(创建一个名为develop 的分支，并定位到该分支
+2).在maste分支上创建一个名为 develop 的分支 git checkout –b develop ,(创建一个名为develop 的分支，并定位到该分支
 3).建立与远程仓库github 的联系 git remate  add origin url(意味远程仓库的所在地址)
 4).本地仓库与远程仓库进行通信  git push  -u origin develop
 ```

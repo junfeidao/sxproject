@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 600px;height:400px;" />
+  <div class="cha" />
 </template>
 <script >
 // 引入echarts
@@ -58,3 +58,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  .cha {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    left: 30px;
+    top: 10px
+  }
+</style>

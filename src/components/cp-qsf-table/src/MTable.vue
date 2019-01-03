@@ -1,20 +1,23 @@
 <template>
-  <ElTable
-    :data="tableData"
-    style="width: 100%"
+  <div
+    class="tab"
   >
-    <ElTableColumn
-      prop="name"
-      label="种类"
-      width="180"
-    />
-    <ElTableColumn
-      prop="volume"
-      label="销量"
-      width="180"
-    />
+    <ElTable
+      :data="tableData"
+    >
+      <ElTableColumn
+        prop="name"
+        label="种类"
+        width="180"
+      />
+      <ElTableColumn
+        prop="volume"
+        label="销量"
+        width="180"
+      />
     <!-- <HelloWorld :tableData="tableData3" :slot-scope="scope"></HelloWorld> -->
-  </ElTable>
+    </ElTable>
+  </div>
 </template>
 
 <script>
@@ -28,6 +31,15 @@ export default {
       }
     }
   }
-
 }
 </script>
+
+<style>
+.tab {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    top: 40px;
+    right: 200px;
+}
+</style>
