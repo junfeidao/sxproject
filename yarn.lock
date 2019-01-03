@@ -3119,7 +3119,7 @@ eslint-plugin-vue@^4.7.1:
   dependencies:
     vue-eslint-parser "^2.0.3"
 
-eslint-plugin-vue@^5.0.0-0:
+eslint-plugin-vue@^5.0.0:
   version "5.0.0"
   resolved "http://10.12.102.194:4873/eslint-plugin-vue/-/eslint-plugin-vue-5.0.0.tgz#4a2cc1c0e71ea45e1bd9c1a60f925bfe68bb5710"
   integrity sha1-SizBwOcepF4b2cGmD5Jb/mi7VxA=
@@ -3204,10 +3204,10 @@ eslint@^4.19.1:
     table "4.0.2"
     text-table "~0.2.0"
 
-eslint@^5.8.0:
-  version "5.11.0"
-  resolved "http://10.12.102.194:4873/eslint/-/eslint-5.11.0.tgz#51a0e70f137a425fe044cd48273b96f28a774b1f"
-  integrity sha1-UaDnDxN6Ql/gRM1IJzuW8op3Sx8=
+eslint@^5.11.1:
+  version "5.11.1"
+  resolved "http://10.12.102.194:4873/eslint/-/eslint-5.11.1.tgz#8deda83db9f354bf9d3f53f9677af7e0e13eadda"
+  integrity sha1-je2oPbnzVL+dP1P5Z3r34OE+rdo=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.5.3"
