@@ -3,5 +3,13 @@
     "path-intellisense.mappings": {
         "@/": "${workspaceRoot}/src"
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "eslint.autoFixOnSave": true,
+    "eslint.nodePath": null,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {"language": "html","autoFix": true},
+        {"language": "vue","autoFix": true}
+    ]
 }
