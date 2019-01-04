@@ -1,37 +1,61 @@
- <template>
+<template>
   <div>
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="city" label="城市" width="180"></el-table-column>
-      <el-table-column prop="day" label="星期几" width="180"></el-table-column>
-      <el-table-column prop="temp" label="温度" width="180" v-if="number==1"></el-table-column>
-      <el-table-column prop="temp" label="温度" width="180" v-else-if="number==2">
-        <template slot-scope>
-          <zglInput type="text" placeholder="请输入温度" @input="changeInformation"></zglInput>
-        </template>
-      </el-table-column>
+    <div>
+      <ElTable :data="tableData" style="width: 100%">
+        <ElTableColumn prop="city" label="城市" width="180" />
+        <ElTableColumn prop="day" label="星期几" width="180" />
+        <ElTableColumn
+          prop="temp"
+          label="温度"
+          width="180"
+        />
+        <ElTableColumn
+          prop="temp"
+          label="修改的温度"
+          width="180"
+        >
+          <template slot-scope="scope">
+            <ZglInput
+              v-show="scope.$index===number"
+              type="text"
+              placeholder="请输入温度"
+              @input="changeInformation"
+            />
+          </template>
+        </ElTableColumn>
 
-      <el-table-column label="编辑" width="180">
-        <template slot-scope="scope">
-          <el-button type="primary" @click="Click(scope.row,scope.$index)">{{text}}</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <LineGraph :tableData="arr"></LineGraph>
+        <ElTableColumn label="编辑" width="180">
+          <template slot-scope="scope">
+            <ElButton type="primary" @click="revampClick(scope.row,scope.$index)">
+              {{ text1 }}
+            </ElButton>
+          </template>
+        </ElTableColumn>
+        <ElTableColumn label="确认修改" width="180">
+          <template slot-scope="scope">
+            <ElButton type="primary" @click="affirmClick(scope.row,scope.$index)">
+              {{ text2 }}
+            </ElButton>
+          </template>
+        </ElTableColumn>
+      </ElTable>
+      <LineGraph :table-data="arr" />
+    </div>
   </div>
 </template>
-  <script>
-  import LineGraph from '@/components/cp-line-graph/index.js'
-import zglInput from "@/components/cp-zgl-input/index.js";
-
+<script>
+import LineGraph from '@/components/cp-line-graph/index.js'
+import ZglInput from "@/components/cp-zgl-input/index.js"
 export default {
   components: {
     LineGraph,
-    zglInput
+    ZglInput
   },
   data() {
     return {
-      number: 1,
-      text: "修改温度",
+      number: "",
+      text1: "修改温度",
+      text2: "确认修改",
       tempV: "",
       tableData: [
         {
@@ -70,29 +94,37 @@ export default {
           temp: 30
         }
       ]
-    };
+    }
   },
   computed: {
     arr() {
       return this.tableData.map(item => {
-        return item.temp;
-      });
+        return item.temp
+      })
     }
   },
   methods: {
     changeInformation(tempValue) {
       // console.log("changeInformation", tempValue);
-      //*这是来自input输入框的数据
-      this.tempV = tempValue;
-      console.log("00", this.tempV);
+      //* 这是来自input输入框的数据
+      this.tempV = tempValue
+      // console.log("00", this.tempV)
     },
-    //怎么把这2个数据给关联起来？怎么把changeInformation的数据传给handleClick？
-    //*获取每一行所对应的数据
-    Click(row, index) {
-      this.number = 2;
-      this.text = "确认修改";
-      this.tableData[index].temp = this.tempV;
+    // 怎么把这2个数据给关联起来？怎么把changeInformation的数据传给handleClick？
+    //* 获取每一行所对应的数据
+    revampClick(row, index) {
+      this.number = index
+      // this.number = 2
+      this.tableData[index].temp = ""
+      // console.log('tag', this.tableData[index].temp)
+    },
+    affirmClick(row, index) {
+      this.number = ""
+      // this.number = 2
+      if (this.tempV) {
+        this.tableData[index].temp = this.tempV
+      }
     }
   }
-};
-</script> 
+}
+</script>
