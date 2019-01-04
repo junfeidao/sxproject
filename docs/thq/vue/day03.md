@@ -1,5 +1,5 @@
 ### 列表渲染
-#### v-for
+#### v-for 循环绑定(值的绑定，遍历)
 用v-for指令根据一组数组的选项列表进行渲染。需要用item in items 的语法。items 是源数据数组并且 item 是数组元素迭代的别名。也可以用 of 替代 in 作为分隔符。
 ```bash
 <ul id="example-1">
@@ -79,15 +79,42 @@ new Vue({
 2. age: 30 
 ```
  如果遍历的是数字，表示重复次数
- ```bash
+```bash
  <span v-for="n in 10">{{ n }} </span>
- ```
- ### 事件处理
- #### 监听事件
+```
+### 事件处理
+#### 监听事件v-on
+ 
+添加一个事件监听器 将事件处理函数定义在methods属性中
+
+```bash
+<template>
+<div>
+ <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">逆转消息</button>
+  </div>
+</template>
+```
+```bash
+<script>
+ export default {
+data: {
+    message: 'Hello Vue.js!'
+  },
+  methods: {
+    reverseMessage() {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+ }
+</script>
+```
+在页面上点击按钮 就能把输入框里的内容翻转，可以手动输入要翻转的内容。输入123456789 点击后为987654321
+
  v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码。
  ```bash
 <div id="example-1">
-  <button v-on:click="counter += 1">Add 1</button>
+  <button @click="counter += 1">Add 1</button>
   <p>The button above has been clicked {{ counter }} times.</p>
 </div>
  ```
@@ -102,7 +129,7 @@ new Vue({
  然而许多事件处理逻辑会更为复杂，所以直接把 JavaScript 代码写在 v-on 指令中是不可行的。因此v-on 还可以接收一个需要调用的方法名称。
 ```bash
 <div id="example-2">
-  <button v-on:click="greet">Greet</button>
+  <button @click="greet">Greet</button>
 </div>
 ```
 ```bash
