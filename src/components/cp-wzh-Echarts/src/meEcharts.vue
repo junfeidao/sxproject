@@ -1,5 +1,5 @@
 <template>
-  <div id="main" style="width: 600px;height:400px;" />
+  <div id="main" style="width: 600px;height:400px;float:left;" />
 </template>
 
 <script>
@@ -7,7 +7,7 @@
 var echarts = require("echarts")
 export default {
   props: {
-    "tableData": {
+    tableData: {
       type: Array,
       default() {
         return []
@@ -35,6 +35,7 @@ export default {
         }, // 提示框
         series: [
           {
+            name: "pie",
             type: "pie",
             data: this.tableData
           }
