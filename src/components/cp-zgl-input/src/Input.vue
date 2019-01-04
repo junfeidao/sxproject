@@ -34,7 +34,6 @@ export default {
       // this.show = false;
       const tempValue = this.tempValue
       this.$emit("input", tempValue)
-      // console.log("temp", tempValue);
     }
   }
 }
