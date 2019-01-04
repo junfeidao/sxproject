@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="~@/assets/logo.png">
     <MeEcharts :table-data="tableData" msg="Welcome to Your Vue.js App" />
     <MeTable :table-data="tableData" />
     <MeForm @divSub="handleSubInput" />
