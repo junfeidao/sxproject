@@ -1,7 +1,7 @@
 <template>
   <div v-show="show">
     <ElInput
-      v-model="tempValue"
+      v-model="array"
       placeholder="请输入温度"
       width="20"
       @input="input"
@@ -11,17 +11,16 @@
 
 <script>
 export default {
-  /*  props: {
-    show: {
-      type: Boolean,
-      default: false
+  /* props: {
+    array: {
+      type: Number,
+      default: Infinity
     }
-  } */
+  }, */
   data() {
     return {
       dayValue: "",
       tempValue: "",
-      row: {},
       show: true
     }
   },
@@ -32,7 +31,7 @@ export default {
     } */
     input() {
       // this.show = false;
-      const tempValue = this.tempValue
+      const tempValue = this.array
       this.$emit("input", tempValue)
     }
   }
