@@ -9,7 +9,7 @@
     </ElTableColumn>
     <ElTableColumn label="销量" width="130">
       <template slot-scope="scope">
-        <span class="mspan" style="margin-left: 10px">
+        <span ref="sp" class="mspan" style="margin-left: 10px">
           {{ scope.row.volume }}
         </span>
         <input v-show="showInput" class="minput" type="text">
@@ -26,7 +26,7 @@
         <ElButton
           size="mini"
           type="primary"
-          @click="handleDelete(scope.$index)"
+          @click="submitValue(scope.$index)"
         >
           确定
         </ElButton>
@@ -58,7 +58,7 @@ export default {
       span[index].style.display = 'none'
       input[index].style.display = 'block'
     },
-    handleDelete(index) {
+    submitValue(index) {
       var span = document.getElementsByClassName("mspan")
       var input = document.getElementsByClassName("minput")
       span[index].style.display = 'block'
