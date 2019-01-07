@@ -8,35 +8,28 @@
           prop="temp"
           label="温度"
           width="180"
-        />
-        <ElTableColumn
-          v-if="show"
-          prop="temp"
-          label="修改的温度"
-          width="180"
         >
           <template slot-scope="scope">
-            <ZglInput
-              v-show="scope.$index===number"
-              type="text"
+            <!-- <p>{{ status[scope.$index] }}</p> -->
+            <span v-if="!status[scope.$index].isEdit">
+              {{ status[scope.$index].value }}
+            </span>
+            <ElInput
+              v-else
+              v-model="status[scope.$index].value"
               placeholder="请输入温度"
-              :array="getIndex"
-              @input="changeInformation"
+              width="20"
             />
           </template>
         </ElTableColumn>
 
         <ElTableColumn label="编辑" width="180">
           <template slot-scope="scope">
-            <ElButton type="primary" @click="revampClick(scope.row,scope.$index)">
-              {{ text1 }}
+            <ElButton v-if="!status[scope.$index].isEdit" type="primary" @click="revampClick(scope.row,scope.$index)">
+              编辑
             </ElButton>
-          </template>
-        </ElTableColumn>
-        <ElTableColumn label="确认修改" width="180">
-          <template slot-scope="scope">
-            <ElButton type="primary" @click="affirmClick(scope.row,scope.$index)">
-              {{ text2 }}
+            <ElButton v-else type="primary" @click="affirmClick(scope.row,scope.$index)">
+              确定
             </ElButton>
           </template>
         </ElTableColumn>
@@ -47,19 +40,14 @@
 </template>
 <script>
 import LineGraph from '@/components/cp-line-graph/index.js'
-import ZglInput from "@/components/cp-zgl-input/index.js"
 export default {
   components: {
-    LineGraph,
-    ZglInput
+    LineGraph
   },
   data() {
     return {
-      number: "",
-      text1: "修改温度",
-      text2: "确认修改",
-      tempV: "",
-      show: false,
+      status: [],
+      // show: false,
       tableData: [
         {
           city: "杭州",
@@ -102,37 +90,26 @@ export default {
   computed: {
     arr() {
       return this.tableData.map(item => {
-        console.log('tag', item.temp)
         return item.temp
-      })
-    },
-    getIndex() {
-      return this.tableData.forEach(function(item) {
-        console.log('tag', item.temp)
-        return item.temp.index
       })
     }
   },
+  created() {
+    this.status = this.tableData.map(item => {
+      return {
+        isEdit: false,
+        value: item.temp
+      }
+    })
+  },
   methods: {
-    changeInformation(tempValue) {
-      //* 这是来自input输入框的数据
-      this.tempV = tempValue
-      // console.log("00", this.tempV)
-    },
     //* 获取每一行所对应的数据
     revampClick(row, index) {
-      this.number = index
-      this.show = true
-      // this.number = 2
-      // console.log('tag', this.tableData[index].temp)
+      this.status[index].isEdit = true
     },
     affirmClick(row, index) {
-      this.number = ""
-      // this.number = 2
-      if (this.tempV) {
-        this.tableData[index].temp = this.tempV
-        this.show = false
-      }
+      this.status[index].isEdit = false
+      this.tableData[index].temp = this.status[index].value
     }
   }
 }
