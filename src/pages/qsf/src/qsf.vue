@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <MChart :value="chartData" />
-    <MTable :table-data="tableData" @inputValue="handleSubInput" />
+    <MTable :table-data="tableData" @change="handleTableChange" />
   </div>
 </template>
 
@@ -46,7 +46,7 @@ export default {
     }
   },
   methods: {
-    handleSubInput(index, value) {
+    handleTableChange(index, value) {
       this.setValue(index, value)
     },
     setValue(index, value) {
