@@ -1,24 +1,19 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <MChart :value="chartData" />
-    <MTable :table-data="tableData" />
-    <MInput @divSub="handleSubInput" />
+    <MTable :table-data="tableData" @inputValue="handleSubInput" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import MChart from '@/components/cp-qsf-chart/index.js'
 import MTable from '@/components/cp-qsf-table/index.js'
-import MInput from '@/components/cp-qsf-input/index.js'
 
 export default {
   name: 'Home',
   components: {
     MChart,
-    MTable,
-    MInput
+    MTable
   },
   data() {
     return {
@@ -51,8 +46,7 @@ export default {
     }
   },
   methods: {
-    handleSubInput({ index, value }) {
-      console.log("tab::::value:", index, value)
+    handleSubInput(index, value) {
       this.setValue(index, value)
     },
     setValue(index, value) {
