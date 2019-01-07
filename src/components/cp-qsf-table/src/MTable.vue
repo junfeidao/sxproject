@@ -10,7 +10,6 @@
     <ElTableColumn label="销量" width="130">
       <template slot-scope="scope">
         <span
-          ref="sp"
           class="mspan"
           style="margin-left: 10px"
         >
@@ -20,7 +19,7 @@
           v-show="showInput"
           class="minput"
           type="text"
-          @blur="spanblu()"
+          @blur="submitValue(scope.$index)"
         >
       </template>
     </ElTableColumn>
@@ -31,13 +30,6 @@
           @click="handleInput(scope.$index)"
         >
           编辑
-        </ElButton>
-        <ElButton
-          size="mini"
-          type="primary"
-          @click="submitValue(scope.$index)"
-        >
-          确定
         </ElButton>
       </template>
     </ElTableColumn>
@@ -74,9 +66,6 @@ export default {
       var input = document.getElementsByClassName("minput")
       span[index].style.display = 'block'
       input[index].style.display = 'none'
-      if (input[index].value === '') {
-        input[index].value = parseInt(span[index].innerHTML, 10)
-      }
       this.$emit("inputValue", index, input[index].value)
     }
   }
