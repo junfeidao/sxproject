@@ -105,17 +105,14 @@ export default {
   },
   methods: {
     changeInformation(tempValue) {
-      // console.log("changeInformation", tempValue);
       //* 这是来自input输入框的数据
       this.tempV = tempValue
       // console.log("00", this.tempV)
     },
-    // 怎么把这2个数据给关联起来？怎么把changeInformation的数据传给handleClick？
     //* 获取每一行所对应的数据
     revampClick(row, index) {
       this.number = index
       // this.number = 2
-      this.tableData[index].temp = ""
       // console.log('tag', this.tableData[index].temp)
     },
     affirmClick(row, index) {
