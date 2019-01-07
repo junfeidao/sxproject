@@ -9,10 +9,19 @@
     </ElTableColumn>
     <ElTableColumn label="销量" width="130">
       <template slot-scope="scope">
-        <span ref="sp" class="mspan" style="margin-left: 10px">
+        <span
+          ref="sp"
+          class="mspan"
+          style="margin-left: 10px"
+        >
           {{ scope.row.volume }}
         </span>
-        <input v-show="showInput" class="minput" type="text">
+        <input
+          v-show="showInput"
+          class="minput"
+          type="text"
+          @blur="spanblu()"
+        >
       </template>
     </ElTableColumn>
     <ElTableColumn label="操作">
@@ -57,12 +66,17 @@ export default {
       var input = document.getElementsByClassName("minput")
       span[index].style.display = 'none'
       input[index].style.display = 'block'
+      input[index].value = parseInt(span[index].innerHTML, 10)
+      // console.log(parseInt(span[index].innerHTML, 10))
     },
     submitValue(index) {
       var span = document.getElementsByClassName("mspan")
       var input = document.getElementsByClassName("minput")
       span[index].style.display = 'block'
       input[index].style.display = 'none'
+      if (input[index].value === '') {
+        input[index].value = parseInt(span[index].innerHTML, 10)
+      }
       this.$emit("inputValue", index, input[index].value)
     }
   }
