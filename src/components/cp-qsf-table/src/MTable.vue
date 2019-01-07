@@ -9,10 +9,10 @@
     </ElTableColumn>
     <ElTableColumn label="销量" width="180">
       <template slot-scope="scope">
-        <span v-show="mspan" style="margin-left: 10px">
+        <span class="mspan" style="margin-left: 10px">
           {{ scope.row.volume }}
         </span>
-        <!-- <input v-show="minput" type="text"> -->
+        <input v-show="showInput" class="minput" type="text">
       </template>
     </ElTableColumn>
     <ElTableColumn label="操作">
@@ -26,7 +26,7 @@
         <ElButton
           size="mini"
           type="primary"
-          @click="handleDelete"
+          @click="handleDelete(scope.$index)"
         >
           确定
         </ElButton>
@@ -48,13 +48,22 @@ export default {
   },
   data() {
     return {
-      minput: false,
-      mspan: true
+      showInput: false
     }
   },
   methods: {
     handleInput(index) {
-      console.log(index)
+      var span = document.getElementsByClassName("mspan")
+      var input = document.getElementsByClassName("minput")
+      span[index].style.display = 'none'
+      input[index].style.display = 'block'
+    },
+    handleDelete(index) {
+      var span = document.getElementsByClassName("mspan")
+      var input = document.getElementsByClassName("minput")
+      span[index].style.display = 'block'
+      input[index].style.display = 'none'
+      this.$emit("inputValue", index, input[index].value)
     }
   }
 }
