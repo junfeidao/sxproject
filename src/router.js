@@ -24,7 +24,7 @@ export default new Router({
   {
     path: '/wxq',
     name: 'wxq',
-    component: () => import('@/components/wxq.vue')
+    component: () => import('@/pages/wxq/index.js')
   }, {
     path: '/zgl',
     name: 'zgl',
