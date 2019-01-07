@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <MeEcharts :table-data="tableData" msg="Welcome to Your Vue.js App" />
-    <MeTable :table-data="tableData" />
+    <MeTable :table-data="tableData" @inputtable="handclick" />
     <MeForm @divSub="handleSubInput" />
   </div>
 </template>
@@ -29,16 +29,28 @@ export default {
       ]
     }
   },
+
+  computed: {
+    tab() {
+      return this.tableData.map(item => {
+        return item.value
+      })
+    }
+  },
+
   methods: {
-    handleSubInput({ index, val }) {
-      console.log("zhi", index)
-      this.setValue(index, val)
+    handleSubInput({ ind, val }) {
+      console.log("zhi", ind)
+      this.setValue(ind, val)
     },
-    setValue(index, val) {
+    setValue(ind, val) {
       this.tableData.push({
-        name: index,
+        name: ind,
         value: val
       })
+    },
+    handclick(index, value) {
+      this.tableData[index].value = value
     }
   }
 }
