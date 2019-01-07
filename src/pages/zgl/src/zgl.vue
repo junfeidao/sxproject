@@ -10,6 +10,7 @@
           width="180"
         />
         <ElTableColumn
+          v-if="show"
           prop="temp"
           label="修改的温度"
           width="180"
@@ -19,6 +20,7 @@
               v-show="scope.$index===number"
               type="text"
               placeholder="请输入温度"
+              :array="getIndex"
               @input="changeInformation"
             />
           </template>
@@ -57,6 +59,7 @@ export default {
       text1: "修改温度",
       text2: "确认修改",
       tempV: "",
+      show: false,
       tableData: [
         {
           city: "杭州",
@@ -99,7 +102,14 @@ export default {
   computed: {
     arr() {
       return this.tableData.map(item => {
+        console.log('tag', item.temp)
         return item.temp
+      })
+    },
+    getIndex() {
+      return this.tableData.forEach(function(item) {
+        console.log('tag', item.temp)
+        return item.temp.index
       })
     }
   },
@@ -112,6 +122,7 @@ export default {
     //* 获取每一行所对应的数据
     revampClick(row, index) {
       this.number = index
+      this.show = true
       // this.number = 2
       // console.log('tag', this.tableData[index].temp)
     },
@@ -120,6 +131,7 @@ export default {
       // this.number = 2
       if (this.tempV) {
         this.tableData[index].temp = this.tempV
+        this.show = false
       }
     }
   }
