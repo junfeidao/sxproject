@@ -139,3 +139,16 @@ subject是本次Commit目的的简短描述，一般不要超过50个字符
     以动词开头，使用第一人称现在时，比如change，而不是changed或changes
     第一个字母小写
     结尾不加句号（.）
+
+## git-cz的全局安装配置过程记录
+
+之前是局部安装，但是小组内其它成员都是全局安装的，提交的时候会有影响，全局安装的出现了一些"蜜汁"错误.这里记录一下
+
+1. 执行命令 npm install -g commitizen
+2. 执行命令 npm install -g conventional-changelog
+3. 执行命令 npm install -g conventional-changelog-cli
+
+然后，问题就出现了。看了下小组内其他成员的。有些这个时候已经可以使用了？！但是我的还是很混乱
+执行```npm ls -g -depth=0```输出完全正常
+执行```echo '{"path":"cz-conventional-changelog"}'>~/.czrc```提示找不到路径或者command not found.
+多次尝试后，我在全局安装的路径下执行了这个命令。。。。```commitizen init cz-conventional-changelog --save --save-exact```,这是在一个项目使用git-cz的命令。然后多次尝试还是不行。。。很绝望。这个时候随缘在桌面打开了git bash，再次执行echo '{"path":"cz-conventional-changelog"}'>~/.czrc。然后没有消息了。一切都好了。
