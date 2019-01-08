@@ -5,20 +5,28 @@
       <ElTableColumn prop="value" label="数量" width="180" />
       <ElTableColumn label="改变数量" width="180">
         <template slot-scope="scope">
-          <input class="input-one">
+          <ElInput v-if="show" v-model="tableData[scope.$index].value" />
         </template>
       </ElTableColumn>
       <ElTableColumn label="确认修改" width="180">
         <template slot-scope="scope">
-          <ElButton class="button-one" type="primary" @click="showout(scope.$index)">
-点击修改
+          <ElButton
+            v-if="!show"
+            ref="btn"
+            class="button-one"
+            type="primary"
+            @click="showout(scope.$index)"
+          >
+{{ text }}
 </ElButton>
-        </template>
-      </ElTableColumn>
-      <ElTableColumn label="提交" width="180">
-        <template slot-scope="scope">
-          <ElButton type="primary" @click="showdown(scope.$index)">
-提交
+          <ElButton
+            v-else
+            ref="btn2"
+            class="button-one"
+            type="primary"
+            @click="showdown(scope.$index)"
+          >
+{{ text2 }}
 </ElButton>
         </template>
       </ElTableColumn>
@@ -26,8 +34,6 @@
   </div>
 </template>
 <script>
-var Input1 = document.getElementsByClassName("input-one")
-var Button1 = document.getElementsByClassName("button-one")
 export default {
   props: {
     tableData: {
@@ -39,22 +45,26 @@ export default {
   },
   data() {
     return {
-      show: false
+      show: false,
+      text: "点击修改",
+      text2: "确认修改"
     }
   },
   methods: {
     showout(index) {
-      if (Input1[index].style.display === "block") {
-        Input1[index].style.display = "none"
-        Button1[index].innerHTML = "点击修改"
+      this.$refs.btn.show = "true"
+      if (this.show === true) {
+        this.show = false
       } else {
-        Input1[index].style.display = "block"
-        Button1[index].innerHTML = "确认修改"
+        this.show = true
       }
     },
     showdown(index) {
-      var value = Input1[index].value
-      this.$emit("inputtable", index, value)
+      if (this.show === true) {
+        this.show = false
+      } else {
+        this.show = true
+      }
     }
   }
 }

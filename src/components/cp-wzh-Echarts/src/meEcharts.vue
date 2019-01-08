@@ -7,7 +7,7 @@
 var echarts = require("echarts")
 export default {
   props: {
-    tableData: {
+    array: {
       type: Array,
       default() {
         return []
@@ -15,7 +15,7 @@ export default {
     }
   },
   watch: {
-    tableData: function() {
+    array: function() {
       this.draw()
     }
   },
@@ -37,11 +37,10 @@ export default {
           {
             name: "pie",
             type: "pie",
-            data: this.tableData
+            data: this.array
           }
         ]
       })
-      console.log(this.tableData)
     }
   }
 }
