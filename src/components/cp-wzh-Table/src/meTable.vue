@@ -5,8 +5,8 @@
       <ElTableColumn label="数量" width="180">
         <template slot-scope="scope">
           <span v-if="!status[scope.$index].isEdit">
-            {{ scope.row.value }}
-          </span>
+{{ scope.row.value }}
+</span>
           <ElInput v-else v-model="status[scope.$index].value" />
         </template>
       </ElTableColumn>
@@ -14,20 +14,14 @@
         <template slot-scope="scope">
           <ElButton
             v-if="!status[scope.$index].isEdit"
-            class="button-one"
             type="primary"
             @click="showout(scope.$index)"
           >
-            点击修改
-          </ElButton>
-          <ElButton
-            v-else
-            class="button-one"
-            type="primary"
-            @click="showdown(scope.$index)"
-          >
-            确认修改
-          </ElButton>
+点击修改
+</ElButton>
+          <ElButton v-else type="primary" @click="showdown(scope.$index)">
+确认修改
+</ElButton>
         </template>
       </ElTableColumn>
     </ElTable>
@@ -75,11 +69,4 @@ export default {
   }
 }
 </script>
-<style>
-.input-one {
-  display: none;
-  width: 100px;
-  height: 35px;
-  border-radius: 6px;
-}
-</style>
+

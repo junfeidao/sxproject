@@ -35,11 +35,6 @@ export default {
         }
       })
     }
-  },
-  watch: {
-    tableData: function() {
-      console.log("22222")
-    }
   }
 }
 </script>
