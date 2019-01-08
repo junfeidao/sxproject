@@ -7,7 +7,7 @@ export default new Router({
   routes: [{
     path: '/lzr',
     name: 'lzr',
-    component: () => import('./pages/lzr/index.js')
+    component: () => import('@/pages/lzr/index.js')
   }, {
     path: '/qsf',
     name: 'qsf',
@@ -24,7 +24,7 @@ export default new Router({
   {
     path: '/wxq',
     name: 'wxq',
-    component: () => import('@/components/wxq.vue')
+    component: () => import('@/pages/wxq/index.js')
   }, {
     path: '/zgl',
     name: 'zgl',

@@ -1,24 +1,20 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="~@/assets/logo.png">
-    <MeEcharts :table-data="tableData" msg="Welcome to Your Vue.js App" />
+    <MeEcharts :array="array" msg="Welcome to Your Vue.js App" />
     <MeTable :table-data="tableData" />
-    <Meform @divSub="handleSubInput" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import meEcharts from "@/components/cp-wzh-Echarts/index.js"
-import meTable from "@/components/cp-wzh-Table/index.js"
-import meform from "@/components/cp-wzh-form/index.js"
+import MeEcharts from "@/components/cp-wzh-Echarts/index.js"
+import MeTable from "@/components/cp-wzh-Table/index.js"
 
 export default {
   name: "Home",
   components: {
-    meEcharts,
-    meTable,
-    meform
+    MeEcharts,
+    MeTable
   },
   data() {
     return {
@@ -30,16 +26,19 @@ export default {
       ]
     }
   },
-  methods: {
-    handleSubInput({ index, val }) {
-      console.log("zhi", index)
-      this.setValue(index, val)
-    },
-    setValue(index, val) {
-      this.tableData.push({
-        name: index,
-        value: val
+  computed: {
+    array() {
+      return this.tableData.map(item => {
+        return {
+          name: item.name,
+          value: item.value
+        }
       })
+    }
+  },
+  watch: {
+    tableData: function() {
+      console.log("22222")
     }
   }
 }

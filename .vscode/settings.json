@@ -1,7 +1,7 @@
 {
     "npm-intellisense.scanDevDependencies": true,
     "path-intellisense.mappings": {
-        "@/": "${workspaceRoot}/src"
+        "@": "${workspaceRoot}/src"
     },
     "editor.tabSize": 2,
     "eslint.autoFixOnSave": true,
@@ -9,7 +9,13 @@
     "eslint.validate": [
         "javascript",
         "javascriptreact",
-        {"language": "html","autoFix": true},
-        {"language": "vue","autoFix": true}
+        {
+            "language": "html",
+            "autoFix": true
+        },
+        {
+            "language": "vue",
+            "autoFix": true
+        }
     ]
 }
