@@ -1,7 +1,7 @@
 <template>
-  <div style="margin-top: 15px;">
-    <ElInput v-model="select" placeholder="请输入销量" />
-    <ElInput v-model="input5" placeholder="请输入销量" />
+  <div id="meform">
+    <ElInput v-model="select" placeholder="请输入姓名" />
+    <ElInput v-model="input5" placeholder="请输入数量" />
     <ElButton
       id="el-button-from"
       slot="append"
@@ -22,11 +22,18 @@ export default {
   },
   methods: {
     divclick: function() {
-      const index = this.select
+      const ind = this.select
       const val = this.input5
-      this.$emit("divSub", { index, val })
+      this.$emit("divSub", { ind, val })
     }
   }
 }
 </script>
+<style>
+#meform {
+  width: 400px;
+  height: 600px;
+  margin-left: 100px;
+}
+</style>
 
