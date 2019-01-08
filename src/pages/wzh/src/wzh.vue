@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <MeEcharts :table-data="tableData" msg="Welcome to Your Vue.js App" />
+    <MeEcharts :array="array" msg="Welcome to Your Vue.js App" />
     <MeTable :table-data="tableData" />
-    <MeForm @divSub="handleSubInput" />
   </div>
 </template>
 
@@ -10,14 +9,12 @@
 // @ is an alias to /src
 import MeEcharts from "@/components/cp-wzh-Echarts/index.js"
 import MeTable from "@/components/cp-wzh-Table/index.js"
-import MeForm from "@/components/cp-wzh-form/index.js"
 
 export default {
   name: "Home",
   components: {
     MeEcharts,
-    MeTable,
-    MeForm
+    MeTable
   },
   data() {
     return {
@@ -29,16 +26,19 @@ export default {
       ]
     }
   },
-  methods: {
-    handleSubInput({ index, val }) {
-      console.log("zhi", index)
-      this.setValue(index, val)
-    },
-    setValue(index, val) {
-      this.tableData.push({
-        name: index,
-        value: val
+  computed: {
+    array() {
+      return this.tableData.map(item => {
+        return {
+          name: item.name,
+          value: item.value
+        }
       })
+    }
+  },
+  watch: {
+    tableData: function() {
+      console.log("22222")
     }
   }
 }

@@ -22,9 +22,9 @@ export default {
   },
   methods: {
     divclick: function() {
-      const index = this.select
+      const ind = this.select
       const val = this.input5
-      this.$emit("divSub", { index, val })
+      this.$emit("divSub", { ind, val })
     }
   }
 }
