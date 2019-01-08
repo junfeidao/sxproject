@@ -7,8 +7,8 @@
 
 <script>
 // @ is an alias to /src
-import MeEcharts from "@/components/cp-wzh-Echarts/index.js"
-import MeTable from "@/components/cp-wzh-Table/index.js"
+import MeEcharts from "@/components/cp-wzh-echarts/index.js"
+import MeTable from "@/components/cp-wzh-table/index.js"
 
 export default {
   name: "Home",

@@ -57,6 +57,7 @@ export default {
       }
     }
   },
+
   methods: {
     showout(index) {
       this.status[index].isEdit = true
