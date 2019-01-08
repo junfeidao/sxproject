@@ -1,15 +1,22 @@
 <template>
-  <div style="width: 600px;height:400px;">
-    <div>{{ kind }}</div>
-    <div>{{ salecount }}</div>
-  </div>
+  <div style="width: 600px;height:400px;" />
 </template>
 <script >
 var echarts = require("echarts")
 export default {
   props: {
-    kind: Array,
-    salecount: Array
+    kind: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    salecount: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
   },
   mounted() {
     this.initChart()
@@ -43,7 +50,6 @@ export default {
         }]
       }
       this.myChart.setOption(options)
-      console.log(this.kind)
     }
   }
 }
