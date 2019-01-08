@@ -14,6 +14,11 @@ export default {
     this.myChart = echarts.init(this.$el)
     this.drawLine()
   },
+  props:{
+      value:{
+        type: Array
+      }
+    },
   methods: {
     drawLine() {
       // 基于准备好的dom，初始化echarts实例
@@ -34,9 +39,14 @@ export default {
         series: [{
           name: '销量',
           type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
+          data: this.value
         }]
       })
+    }
+  },
+  watch:{
+    value(){
+      this.drawLine()
     }
   }
 }
