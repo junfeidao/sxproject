@@ -10,31 +10,32 @@
     <ElTableColumn label="销量" width="130">
       <template slot-scope="scope">
         <span
-          ref="sp"
+          v-if="!status[scope.$index].isEdit"
           class="mspan"
           style="margin-left: 10px"
         >
           {{ scope.row.volume }}
         </span>
         <input
-          v-show="showInput"
+          v-else
+          v-model="status[scope.$index].value"
           class="minput"
           type="text"
-          @blur="spanblu()"
         >
       </template>
     </ElTableColumn>
     <ElTableColumn label="操作">
       <template slot-scope="scope">
         <ElButton
+          v-if="!status[scope.$index].isEdit"
           size="mini"
-          @click="handleInput(scope.$index)"
+          @click="handleClickEdit(scope.$index)"
         >
           编辑
         </ElButton>
         <ElButton
+          v-else
           size="mini"
-          type="primary"
           @click="submitValue(scope.$index)"
         >
           确定
@@ -57,27 +58,30 @@ export default {
   },
   data() {
     return {
+      status: [],
       showInput: false
     }
   },
+  watch: {
+    tableData: {
+      immediate: true,
+      handler() {
+        this.status = this.tableData.map(item => {
+          return {
+            isEdit: false,
+            value: item.volume
+          }
+        })
+      }
+    }
+  },
   methods: {
-    handleInput(index) {
-      var span = document.getElementsByClassName("mspan")
-      var input = document.getElementsByClassName("minput")
-      span[index].style.display = 'none'
-      input[index].style.display = 'block'
-      input[index].value = parseInt(span[index].innerHTML, 10)
-      // console.log(parseInt(span[index].innerHTML, 10))
+    handleClickEdit(index) {
+      this.status[index].isEdit = true
     },
     submitValue(index) {
-      var span = document.getElementsByClassName("mspan")
-      var input = document.getElementsByClassName("minput")
-      span[index].style.display = 'block'
-      input[index].style.display = 'none'
-      if (input[index].value === '') {
-        input[index].value = parseInt(span[index].innerHTML, 10)
-      }
-      this.$emit("inputValue", index, input[index].value)
+      this.status[index].isEdit = false
+      this.$emit("change", index, this.status[index].value)
     }
   }
 }
