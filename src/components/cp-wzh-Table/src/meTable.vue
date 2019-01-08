@@ -2,17 +2,18 @@
   <div style="float:left;margin-top:50px;width:800px;">
     <ElTable :data="tableData" style="width: 100%">
       <ElTableColumn prop="name" label="姓名" width="180" />
-      <ElTableColumn label="改变数量" width="180">
+      <ElTableColumn label="数量" width="180">
         <template slot-scope="scope">
-          <span>{{ scope.row.value }}</span>
-          <ElInput v-if="show" v-model="tableData[scope.$index].value" :display="show" />
+          <span v-if="!status[scope.$index].isEdit">
+            {{ scope.row.value }}
+          </span>
+          <ElInput v-else v-model="status[scope.$index].value" />
         </template>
       </ElTableColumn>
       <ElTableColumn label="确认修改" width="180">
         <template slot-scope="scope">
           <ElButton
-            v-if="!show"
-            :display="show"
+            v-if="!status[scope.$index].isEdit"
             class="button-one"
             type="primary"
             @click="showout(scope.$index)"
@@ -22,7 +23,6 @@
           <ElButton
             v-else
             class="button-one"
-            :display="show"
             type="primary"
             @click="showdown(scope.$index)"
           >
@@ -45,25 +45,31 @@ export default {
   },
   data() {
     return {
-      show: false,
-      index: ""
+      status: []
+    }
+  },
+  watch: {
+    tableData: {
+      immediate: true,
+      handler() {
+        this.status = this.tableData.map(item => {
+          return {
+            isEdit: false,
+            value: item.value
+          }
+        })
+      }
     }
   },
   methods: {
     showout(index) {
-      if (this.show === true) {
-        this.show = false
-      } else {
-        this.show = true
-      }
-      // this.index = index
+      this.status[index].isEdit = true
     },
     showdown(index) {
-      if (this.show === true) {
-        this.show = false
-      } else {
-        this.show = true
-      }
+      this.status[index].isEdit = false
+      this.tableData[index].value = this.status[index].value
+
+      this.$emit('change', index, this.status[index].value)
     }
   }
 }
