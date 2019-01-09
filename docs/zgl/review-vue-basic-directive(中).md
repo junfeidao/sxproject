@@ -60,6 +60,7 @@ const vm=new Vue({
 font-size:0.5em
 }
 ```
+```html
 1.采用数组的形式绑定class
 <h1 class="['color','font']"></h1>
 2.采用数组加三元表达式
@@ -70,3 +71,56 @@ font-size:0.5em
 <h1 class="{color:true',font:true}"></h1>
 4.采用对象形式进行修改内联样式
 <h1 class="{color:bule,font-size:0.6em}"></h1>
+```
++ v-model(在vue中其他指令仅实现了model层到view，而仅有v-mode实现了model到view层，view到model层，即双向绑定)
+ 1. v-model 只可以在表单元素中使用(input,select,checkbox等)
+ 1. v-model绑定的表单元素的value值
+ 1. v-mode进行绑定checkbox和select绑定的是一个数组
+ + 
+```html
+<div id="app">
+      <input type="text" v-model="n1">
+      <select v-model="opt">
+          <option>+</option>
+          <option>-</option>
+          <option>*</option>
+          <option>/</option>
+      </select >
+      <input type="text" v-model="n2">
+          <button @click="comp">=</button>
+          <input type="text" v-model="result">
+  </div>
+```
+```javascript
+  <script>
+  const vm=new Vue({
+      el:"#app",
+      data:{
+          n1:0,
+          n2:0,
+          result:0,
+          opt:"+"
+      },
+      methods: {
+          comp(){
+           switch(this.opt){
+               case "+":
+               this.result=parseInt(this.n1)+parseInt(this.n1)
+               break;
+               case "-":
+               this.result=parseInt(this.n1)-parseInt(this.n1)
+               break;
+               case"*" :
+               this.result=parseInt(this.n1)*parseInt(this.n1)
+               break;
+               case"/" :
+               this.result=parseInt(this.n1)/parseInt(this.n1)
+               break;
+           }
+
+          }
+      },
+
+  })
+  </script>
+```
