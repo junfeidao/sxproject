@@ -6,7 +6,7 @@
 const mv=new Vue({
 el:"#app",//表示Vue实例所控制的区域
 data:{
-message2:"哈哈哈，我来复习vue了"
+message2:"哈哈哈，我来复习vue了".
 }
 })
 ```
