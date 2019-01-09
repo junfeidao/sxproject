@@ -1,5 +1,6 @@
 <template>
   <div class="box">
+    <Table :value="chartData" />
     <ElTable :data="tableData" style="width: 100%">
       <ElTableColumn type="index" label="序号" width="50" />
       <ElTableColumn prop="name" label="种类" width="90" />
@@ -9,7 +10,6 @@
         </template>
       </ElTableColumn>
     </ElTable>
-    <Table :value="chartData" />
   </div>
 </template>
 <script>
@@ -58,9 +58,9 @@ export default {
 }
 </script>
 <style>
- .box{
+  .box{
      display: flex;
-     flex-direction:row-reverse;
+     flex-direction:row;
  }
 .login-form-input .el-input__inner {
      border: 0 none;
