@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="thq box">
     <Table :value="chartData" />
     <ElTable :data="tableData" style="width: 100%">
       <ElTableColumn type="index" label="序号" width="50" />
@@ -57,13 +57,15 @@ export default {
   }
 }
 </script>
-<style>
-  .box{
-     display: flex;
-     flex-direction:row;
- }
-.login-form-input .el-input__inner {
-     border: 0 none;
-     height:30px ;
+<style lang="less">
+.thq{
+    display: flex;
+    flex-direction:row;
+    .login-form-input {
+      .el-input__inner {
+        border: 0 none;
+        height:30px ;
+      }
     }
+ }
 </style>
