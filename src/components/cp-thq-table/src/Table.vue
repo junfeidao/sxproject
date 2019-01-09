@@ -7,7 +7,10 @@ const echarts = require("echarts")
 export default {
   props: {
     value: {
-      type: Array
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
   watch: {

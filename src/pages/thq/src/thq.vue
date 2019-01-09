@@ -5,8 +5,8 @@
       <ElTableColumn prop="name" label="种类" width="90" />
       <ElTableColumn prop="number" label="销量" width="100">
         <template slot-scope="scope">
-        <el-input class="login-form-input"  v-model="scope.row.number"></el-input> 
-      </template>
+          <ElInput v-model="scope.row.number" class="login-form-input" />
+        </template>
       </ElTableColumn>
     </ElTable>
     <Table :value="chartData" />
@@ -48,14 +48,14 @@ export default {
       ]
     }
   },
-  computed:{
-          chartData(){
-            return this.tableData.map(item =>{
-              return item.number
-            })
-          }
-        }
+  computed: {
+    chartData() {
+      return this.tableData.map(item => {
+        return item.number
+      })
     }
+  }
+}
 </script>
 <style>
  .box{
@@ -63,7 +63,7 @@ export default {
      flex-direction:row-reverse;
  }
 .login-form-input .el-input__inner {
-     border: 0 none;  
+     border: 0 none;
      height:30px ;
     }
 </style>
