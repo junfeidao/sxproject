@@ -6,36 +6,43 @@
 </template>
 
 <script>
-import MChart from '@/components/cp-qsf-chart/index.js'
-import MTable from '@/components/cp-qsf-table/index.js'
+import MChart from "@/components/cp-qsf-chart/index.js"
+import MTable from "@/components/cp-qsf-table/index.js"
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     MChart,
     MTable
   },
   data() {
     return {
-      tableData: [{
-        name: '衬衫',
-        volume: '5'
-      }, {
-        name: '羊毛衫',
-        volume: '20'
-      }, {
-        name: '雪纺衫',
-        volume: '36'
-      }, {
-        name: '裤子',
-        volume: '10'
-      }, {
-        name: '高跟鞋',
-        volume: '10'
-      }, {
-        name: '袜子',
-        volume: '20'
-      }]
+      tableData: [
+        {
+          name: "衬衫",
+          volume: "5"
+        },
+        {
+          name: "羊毛衫",
+          volume: "20"
+        },
+        {
+          name: "雪纺衫",
+          volume: "36"
+        },
+        {
+          name: "裤子",
+          volume: "10"
+        },
+        {
+          name: "高跟鞋",
+          volume: "10"
+        },
+        {
+          name: "袜子",
+          volume: "20"
+        }
+      ]
     }
   },
   computed: {
@@ -50,7 +57,7 @@ export default {
       this.setValue(index, value)
     },
     setValue(index, value) {
-      this.tableData[index]['volume'] = value
+      this.tableData[index]["volume"] = value
     }
   }
 }

@@ -21,6 +21,7 @@
           v-model="status[scope.$index].value"
           class="minput"
           type="text"
+          @blur="changeInput(scope.$index)"
         >
       </template>
     </ElTableColumn>
@@ -29,6 +30,7 @@
         <ElButton
           v-if="!status[scope.$index].isEdit"
           size="mini"
+          type="primary"
           @click="handleClickEdit(scope.$index)"
         >
           编辑
@@ -36,6 +38,7 @@
         <ElButton
           v-else
           size="mini"
+          type="success"
           @click="submitValue(scope.$index)"
         >
           确定
@@ -58,8 +61,8 @@ export default {
   },
   data() {
     return {
-      status: [],
-      showInput: false
+      status: []
+      // showInput: false
     }
   },
   watch: {
@@ -82,6 +85,9 @@ export default {
     submitValue(index) {
       this.status[index].isEdit = false
       this.$emit("change", index, this.status[index].value)
+    },
+    changeInput(index) {
+      this.status[index].isEdit = false
     }
   }
 }
