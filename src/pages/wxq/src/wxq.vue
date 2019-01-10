@@ -37,7 +37,7 @@ export default {
         kind: '袜子',
         saleCount: '20'
       }]
-      // tableData: [{  尝试这种但是会有错误，上方的信息有些重复
+      // tableData: [{  尝试这种但是会有错误，上方的信息有些重复,可以尝试优化一下
       //   kind: this.kinds[0],
       //   saleCount: this.saleCounts[0]
       // }, {
