@@ -18,8 +18,7 @@
           v-model="scope.row.saleCount"
           class="edit-cell"
           size="small"
-          placeholder="请输入内容"
-          @change="handleEdit(scope.$index, scope.row)"
+          @change="handleEdit(scope.$index,scope.row)"
         /> <span style="margin-left: 10px">
           {{ scope.row.saleCount }}
         </span>
@@ -41,12 +40,12 @@ export default {
   data() {
     return {
       fromData: this.tableData,
-      showEdit: []
+      status: []
     }
   },
   methods: {
     handleEdit(index, row) {
-      console.log(index, row)
+      this.tableData[index]["saleCount"] = row.saleCount
     }
   }
 }
