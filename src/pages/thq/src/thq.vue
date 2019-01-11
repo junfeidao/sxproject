@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import MyEcharts from '@/components/cp-thq-table/src/MyEcharts.vue'
+import MyEcharts from '@/components/cp-thq-table/index.js'
 export default {
   components: {
     MyEcharts
