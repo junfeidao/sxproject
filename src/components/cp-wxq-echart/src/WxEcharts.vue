@@ -12,7 +12,7 @@ export default {
       }
     }
   },
-  watch: { // computed触发后需要重新渲染
+  watch: { // computed触发后需要重新渲染图表,这里的监听会在编辑时就触发，不太好，编辑结束以后再触发更好
     saleCount() {
       this.draw()
       console.log("监听事件")
