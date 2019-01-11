@@ -15,6 +15,11 @@ export default {
       }
     }
   },
+  watch: {
+    tableData() {
+      this.drawLine()
+    }
+  },
   mounted() {
     this.myChart = echarts.init(this.$el)// 初始化
     this.drawLine()
