@@ -6,7 +6,11 @@
         <ElTableColumn type="index" width="80" />
         <ElTableColumn prop="date" label="date" width="180" />
         <ElTableColumn prop="week" label="week" width="180" />
-        <ElTableColumn prop="temperature" label="温度" />
+        <ElTableColumn prop="temperature" label="温度">
+          <template slot-scope="cope">
+            <ElInput v-model="cope.row.temperature" class="lzrinput" />
+          </template>
+        </ElTableColumn>
       </ElTable>
     </div>
   </div>
@@ -70,5 +74,8 @@ export default {
 .box{
   display: flex;
   flex-direction: row;
+}
+.lzrinput .el-input__inner{
+  border:0 none;
 }
 </style>
