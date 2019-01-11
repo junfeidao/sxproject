@@ -28,6 +28,7 @@
     "chokidar": "^2.0.4",
     "compression": "^1.7.3",
     "conventional-changelog": "^3.0.5",
+    "cz-conventional-changelog": "^2.1.0",
     "del": "^3.0.0",
     "eslint": "^5.11.1",
     "eslint-plugin-vue": "^5.0.0",
@@ -47,5 +48,10 @@
   },
   "gitHooks": {
     "commit-msg": "node build/verifyCommitMsg.js"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
