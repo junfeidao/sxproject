@@ -69,7 +69,7 @@ export default {
       this.status[index].isEdit = false
       this.tableData[index].value = this.status[index].value
 
-      this.$emit('change', index, this.status[index].value)
+      // this.$emit('change', index, this.status[index].value)
     }
   }
 }

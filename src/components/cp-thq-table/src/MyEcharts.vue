@@ -5,6 +5,19 @@
 <script >
 const echarts = require("echarts")
 export default {
+  props: {
+    value: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
+  watch: {
+    value() {
+      this.drawLine()
+    }
+  },
   mounted() {
     this.myChart = echarts.init(this.$el)
     this.drawLine()
@@ -26,13 +39,11 @@ export default {
           data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
         },
         yAxis: {},
-        series: [
-          {
-            name: "销量",
-            type: "bar",
-            data: [5, 20, 36, 10, 10, 20]
-          }
-        ]
+        series: [{
+          name: '销量',
+          type: 'bar',
+          data: this.value
+        }]
       })
     }
   }
