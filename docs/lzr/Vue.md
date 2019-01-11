@@ -1,9 +1,15 @@
 # Day01
 ## Vue-cli3.0的安装
+<<<<<<< HEAD
 ```
 npm install -g @vue/cli
 yarn global add @vue/cli
 ```
+=======
+`npm install -g @vue/cli`
+或
+`yarn global add @vue/cli`
+>>>>>>> feature/lzr
 
 ## 检测安装
 `vue -V`
