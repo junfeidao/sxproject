@@ -2,7 +2,7 @@
 ## Vue-cli3.0的安装
 ```
 npm install -g @vue/cli
-yarn global aadd @vue/cli
+yarn global add @vue/cli
 ```
 
 ## 检测安装
