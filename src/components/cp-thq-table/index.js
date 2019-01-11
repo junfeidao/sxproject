@@ -1,2 +1,2 @@
-import Table from './src/Table.vue'
-export default Table
+import MyEcharts from './src/MyEcharts.vue'
+export default MyEcharts
