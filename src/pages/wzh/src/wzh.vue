@@ -1,19 +1,19 @@
 <template>
   <div class="home">
-    <!-- <MeEcharts :array="array" msg="Welcome to Your Vue.js App" /> -->
+    <MeEcharts :array="array" msg="Welcome to Your Vue.js App" />
     <!-- <MeTable :table-data="tableData" /> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import MeEcharts from "@/components/cp-wzh-Echarts/index.js"
+import MeEcharts from "@/components/cp-wzh-echart/index.js"
 // import MeTable from "@/components/cp-wzh-Table/index.js"
 
 export default {
   name: "Home",
   components: {
-    // MeEcharts,
+    MeEcharts
     // MeTable
   },
   data() {
