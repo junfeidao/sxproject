@@ -14,18 +14,12 @@
         <template slot-scope="scope">
           <ElButton
             v-if="!status[scope.$index].isEdit"
-            class="button-one"
             type="primary"
             @click="showout(scope.$index)"
           >
             点击修改
           </ElButton>
-          <ElButton
-            v-else
-            class="button-one"
-            type="primary"
-            @click="showdown(scope.$index)"
-          >
+          <ElButton v-else type="primary" @click="showdown(scope.$index)">
             确认修改
           </ElButton>
         </template>
@@ -61,6 +55,7 @@ export default {
       }
     }
   },
+
   methods: {
     showout(index) {
       this.status[index].isEdit = true
@@ -74,11 +69,4 @@ export default {
   }
 }
 </script>
-<style>
-.input-one {
-  display: none;
-  width: 100px;
-  height: 35px;
-  border-radius: 6px;
-}
-</style>
+

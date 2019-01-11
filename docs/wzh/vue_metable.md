@@ -138,7 +138,7 @@ export default {
 
 ### 接下来我们需要再次创建一个子组件 meform 以更改我们的数据来让我们的项目变成可以随时增加数据的项目
 
-### 和 meTable 组件一样我们先新建一个 meform.vue 文件，然后在父组件中注册一下，不过和 meTable 不一样的是这一回我们要做的事从子组件传值给父组件，所以并不需要将 data（）传送给 meform
+### 和 meTable 组件一样我们先新建一个 meform.vue 文件，然后在父组件中注册一下，不过和 meTable 不一样的是这一回我们要做的是从子组件传值给父组件，所以并不需要将 data（）传送给 meform
 
 ```html
 <template>
