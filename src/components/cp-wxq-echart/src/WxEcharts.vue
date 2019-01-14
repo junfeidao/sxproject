@@ -10,12 +10,17 @@ export default {
       default() {
         return []
       }
+    },
+    kind: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
   watch: { // computed触发后需要重新渲染图表,这里的监听会在编辑时就触发，不太好，编辑结束以后再触发更好
     saleCount() {
       this.draw()
-      console.log("监听事件")
     }
   },
   mounted() {
@@ -37,7 +42,7 @@ export default {
           data: ['销量']
         },
         xAxis: {
-          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+          data: this.kind,
           name: '种类'
         },
         yAxis: {
