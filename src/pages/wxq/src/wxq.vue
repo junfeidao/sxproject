@@ -1,18 +1,23 @@
 <template>
   <div class="home" style="display:flex;align-items:center">
-    <WxEcharts :sale-count="saleCount" />
-    <WxTable :table-data="tableData" />
+    <WxEcharts :sale-count="saleCount" :kind="kind" />
+    <div class="wrap">
+      <WxTable :table-data="tableData" />
+      <WxDialog :table-data="tableData" />
+    </div>
   </div>
 </template>
 
 <script>
 import WxEcharts from '@/components/cp-wxq-echart/index.js'
 import WxTable from '@/components/cp-wxq-table/index.js'
+import WxDialog from '@/components/cp-wxq-dialog/index.js'
 
 export default {
   components: {
     WxEcharts,
-    WxTable
+    WxTable,
+    WxDialog
   },
   data() {
     return {
@@ -42,8 +47,19 @@ export default {
       return this.tableData.map(item => {
         return item.saleCount
       })
+    },
+    kind() {
+      return this.tableData.map(item => {
+        return item.kind
+      })
     }
   }
 }
 </script>
 
+<style>
+  .wrap {
+    display: flex;
+    flex-direction: column
+  }
+</style>
