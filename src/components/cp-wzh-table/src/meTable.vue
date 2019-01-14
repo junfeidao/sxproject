@@ -1,5 +1,5 @@
 <template>
-  <div style="float:left;margin-top:50px;width:800px;">
+  <div style="float:left;margin-top:50px;width:540px;">
     <ElTable :data="tableData" style="width: 100%">
       <ElTableColumn prop="name" label="姓名" width="180" />
       <ElTableColumn label="数量" width="180">
@@ -25,10 +25,15 @@
         </template>
       </ElTableColumn>
     </ElTable>
+    <Meinput :table-data="tableData" @out="out" />
   </div>
 </template>
 <script>
+import Meinput from "@/components/cp-wzh-input/index.js"
 export default {
+  components: {
+    Meinput
+  },
   props: {
     tableData: {
       type: Array,
@@ -55,7 +60,6 @@ export default {
       }
     }
   },
-
   methods: {
     showout(index) {
       this.status[index].isEdit = true
@@ -63,8 +67,13 @@ export default {
     showdown(index) {
       this.status[index].isEdit = false
       this.tableData[index].value = this.status[index].value
-
       // this.$emit('change', index, this.status[index].value)
+    },
+    out(na, val) {
+      this.tableData.push({
+        name: na,
+        value: val
+      })
     }
   }
 }
