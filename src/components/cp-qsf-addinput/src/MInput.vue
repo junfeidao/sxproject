@@ -1,6 +1,7 @@
 <template>
-  <div class="Inp" @click="viewInput">
-    <div v-if="isEdit" class="box">
+  <div class="Inp" @click="isEdit=false">
+    <i v-if="isEdit" class="el-icon-circle-plus" />
+    <div v-else class="box">
       <input ref="name" type="text" class="leftinp">
       <input ref="volume" type="text" class="rightinp">
       <ElButton
@@ -11,7 +12,12 @@
       >
         确定
       </ElButton>
-      <ElButton type="danger" size="small" round>
+      <ElButton
+        type="danger"
+        size="small"
+        round
+        @click.stop="isEdit=true"
+      >
         取消
       </ElButton>
     </div>
@@ -23,17 +29,16 @@ export default {
   name: 'Inp',
   data() {
     return {
-      isEdit: false
+      isEdit: true
     }
   },
   methods: {
-    viewInput() {
-      this.isEdit = true
-    },
     handleInput() {
       var name = this.$refs.name.value
       var volume = this.$refs.volume.value
-      this.$emit('handleInput', { name, volume })
+      if (name !== '' && volume !== '') {
+        this.$emit('handleInput', { name, volume })
+      }
     }
   }
 }
@@ -46,9 +51,10 @@ export default {
   border-bottom: 1px #eee;
   border-style: none none solid none;
   padding-top: 10px;
+  position: relative;
 }
 .leftinp {
-  width: 30px;
+  width: 50px;
   height: 30px;
   float: left;
   margin-left: 20px;
@@ -57,7 +63,12 @@ export default {
   width: 30px;
   height: 30px;
   float: left;
-  margin-left: 57px;
+  margin-left: 40px;
+}
+.el-icon-circle-plus {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%)
 }
 </style>
 

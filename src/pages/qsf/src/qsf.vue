@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MChart :value="chartData" />
+    <MChart :value="chartData" :chartname="chartName" />
     <div class="tab">
       <MTable :table-data="tableData" @change="handleTableChange" />
       <MInput @handleInput="handleInput" />
@@ -55,6 +55,11 @@ export default {
       return this.tableData.map(item => {
         return item.volume
       })
+    },
+    chartName() {
+      return this.tableData.map(item => {
+        return item.name
+      })
     }
   },
   methods: {
@@ -65,7 +70,9 @@ export default {
       this.tableData[index]["volume"] = value
     },
     handleInput({ name, volume }) {
-      this.tableData.push({ name: name, volume: volume })
+      if (this.tableData.length < 13) {
+        this.tableData.push({ 'name': name, 'volume': volume })
+      }
     }
   }
 }

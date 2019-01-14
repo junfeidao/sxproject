@@ -12,6 +12,12 @@ export default {
       default() {
         return []
       }
+    },
+    chartname: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
   watch: {
@@ -40,8 +46,8 @@ export default {
           data: ['销量']
         },
         xAxis: {
-          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-          name: '种类'
+          name: '种类',
+          data: this.chartname
         },
         yAxis: {
           name: '销量'
@@ -61,10 +67,10 @@ export default {
 
 <style>
   .Cha {
-    width: 400px;
+    width: 800px;
     height: 400px;
     position: relative;
-    left: 20px;
-    top: 0;
+    left: 0;
+    top: 50px;
   }
 </style>
