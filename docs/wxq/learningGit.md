@@ -152,3 +152,31 @@ subject是本次Commit目的的简短描述，一般不要超过50个字符
 执行```npm ls -g -depth=0```输出完全正常
 执行```echo '{"path":"cz-conventional-changelog"}'>~/.czrc```提示找不到路径或者command not found.
 多次尝试后，我在全局安装的路径下执行了这个命令。。。。```commitizen init cz-conventional-changelog --save --save-exact```,这是在一个项目使用git-cz的命令。然后多次尝试还是不行。。。很绝望。这个时候随缘在桌面打开了git bash，再次执行echo '{"path":"cz-conventional-changelog"}'>~/.czrc。然后没有消息了。一切都好了。
+
+## git删除文件、移动和重命名文件。
+
+### git删除文件
+
+git有一个跟踪文件清单。要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除（确切地说，是从暂存区域移除），然后提交。可以用 git rm 命令完成此项工作，并连带从工作目录中删除指定的文件，这样以后就不会出现在未跟踪文件清单中了。如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 “Changes not staged for commit” 部分（也就是未暂存清单）看到：
+
+```git
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    grit.gemspec
+```
+
+然后再运行 git rm 记录此次移除文件的操作：```git rm filename```
+最后提交的时候，该文件就不再纳入版本管理了。如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f（译注：即 force 的首字母），以防误删除文件后丢失修改的内容。
+也可以把一个文件从git仓库删除但是保留在当前的工作目录中，也就是从git的跟踪清单中删除: ```git rm --cached readme.txt```
+
+### 移动和重命名文件
+
+git不会跟踪文件移动操作。如果在git中重命名了某个文件直接的修改文件名，git是无法正常工作的。需要使用git命令```git mv oldname newname```这条命令等于下面三条命令：
+
+```git
+mv README.txt README  linux命令，对文件重新命名
+git rm README.txt   从git仓库中删除文件
+git add README   将新命名的文件添加到git仓库
+```
