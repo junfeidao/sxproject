@@ -1,19 +1,24 @@
 <template>
   <div class="home">
     <MChart :value="chartData" />
-    <MTable :table-data="tableData" @change="handleTableChange" />
+    <div class="tab">
+      <MTable :table-data="tableData" @change="handleTableChange" />
+      <MInput @handleInput="handleInput" />
+    </div>
   </div>
 </template>
 
 <script>
 import MChart from "@/components/cp-qsf-chart/index.js"
 import MTable from "@/components/cp-qsf-table/index.js"
+import MInput from "@/components/cp-qsf-addinput/index.js"
 
 export default {
   name: "Home",
   components: {
     MChart,
-    MTable
+    MTable,
+    MInput
   },
   data() {
     return {
@@ -58,7 +63,20 @@ export default {
     },
     setValue(index, value) {
       this.tableData[index]["volume"] = value
+    },
+    handleInput({ name, volume }) {
+      this.tableData.push({ name: name, volume: volume })
     }
   }
 }
 </script>
+
+<style>
+.tab {
+  width: 430px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+</style>

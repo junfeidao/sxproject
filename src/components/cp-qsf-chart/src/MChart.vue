@@ -1,5 +1,5 @@
 <template>
-  <div class="cha" />
+  <div class="Cha" />
 </template>
 <script >
 // 引入echarts
@@ -60,11 +60,11 @@ export default {
 </script>
 
 <style>
-  .cha {
-    width: 600px;
+  .Cha {
+    width: 400px;
     height: 400px;
     position: relative;
-    left: 50px;
-    top: 100px
+    left: 20px;
+    top: 0;
   }
 </style>
