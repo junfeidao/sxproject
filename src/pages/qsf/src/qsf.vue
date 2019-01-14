@@ -3,7 +3,7 @@
     <MChart :value="chartData" :chartname="chartName" />
     <div class="tab">
       <MTable :table-data="tableData" @change="handleTableChange" />
-      <MInput @handleInput="handleInput" />
+      <MInput :change="change" @handleInput="handleInput" />
     </div>
   </div>
 </template>
@@ -47,7 +47,8 @@ export default {
           name: "袜子",
           volume: "20"
         }
-      ]
+      ],
+      change: ''
     }
   },
   computed: {
@@ -72,6 +73,7 @@ export default {
     handleInput({ name, volume }) {
       if (this.tableData.length < 13) {
         this.tableData.push({ 'name': name, 'volume': volume })
+        this.change = true
       }
     }
   }

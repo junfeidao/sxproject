@@ -33,12 +33,15 @@ export default {
     }
   },
   methods: {
-    handleInput() {
+    handleInput(event) {
+      event.stopPropagation()
       var name = this.$refs.name.value
       var volume = this.$refs.volume.value
       if (name !== '' && volume !== '') {
         this.$emit('handleInput', { name, volume })
       }
+      this.stopPropagation(this.isEdit = true)
+      this.isEdit = true
     }
   }
 }
