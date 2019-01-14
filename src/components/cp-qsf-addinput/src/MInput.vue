@@ -39,9 +39,8 @@ export default {
       var volume = this.$refs.volume.value
       if (name !== '' && volume !== '') {
         this.$emit('handleInput', { name, volume })
+        this.isEdit = true
       }
-      this.stopPropagation(this.isEdit = true)
-      this.isEdit = true
     }
   }
 }
