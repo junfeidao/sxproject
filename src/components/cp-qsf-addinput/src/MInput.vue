@@ -66,6 +66,7 @@ export default {
   height: 30px;
   float: left;
   margin-left: 40px;
+  margin-right: 30px;
 }
 .el-icon-circle-plus {
   position: absolute;
