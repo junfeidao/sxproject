@@ -10,7 +10,6 @@
           width="180"
         >
           <template slot-scope="scope">
-            <!-- <p>{{ status[scope.$index] }}</p> -->
             <span v-if="!status[scope.$index].isEdit">
               {{ status[scope.$index].value }}
             </span>
@@ -22,7 +21,6 @@
             />
           </template>
         </ElTableColumn>
-
         <ElTableColumn label="编辑" width="180">
           <template slot-scope="scope">
             <ElButton v-if="!status[scope.$index].isEdit" type="primary" @click="revampClick(scope.row,scope.$index)">
@@ -34,18 +32,22 @@
           </template>
         </ElTableColumn>
       </ElTable>
-      <LineGraph :table-data="arr" />
+      <AddButton @obj="getObj" />
+      <LineGraph :table-data="arr" :day="day" />
     </div>
   </div>
 </template>
 <script>
 import LineGraph from '@/components/cp-line-graph/index.js'
+import AddButton from '@/components/cp-zgl-add-button/index.js'
 export default {
   components: {
-    LineGraph
+    LineGraph,
+    AddButton
   },
   data() {
     return {
+
       status: [],
       // show: false,
       tableData: [
@@ -92,15 +94,32 @@ export default {
       return this.tableData.map(item => {
         return item.temp
       })
+    },
+    day() {
+      return this.tableData.map(item => {
+        return item.day
+      })
     }
+
   },
-  created() {
+  /* watch: {
+    tableData(newVal, oldVal) {
+      console.log(newVal)
+      console.log('tag', oldVal)
+    }
+  }, */
+  mounted() {
     this.status = this.tableData.map(item => {
+      // console.log('tag', this.status)
       return {
         isEdit: false,
         value: item.temp
+
       }
     })
+  },
+  updated() {
+
   },
   methods: {
     //* 获取每一行所对应的数据
@@ -110,6 +129,24 @@ export default {
     affirmClick(row, index) {
       this.status[index].isEdit = false
       this.tableData[index].temp = this.status[index].value
+    },
+    getObj(city, day, temp) {
+      const obj = {
+        city: city,
+        day: day,
+        temp: temp
+      }
+      this.tableData.push(obj)
+      this.status = this.tableData.map(item => {
+      // console.log('tag', this.status)
+        return {
+          isEdit: false,
+          value: item.temp
+
+        }
+      })
+      // console.log('tag', this.tableData)
+      return this.tableData
     }
   }
 }
