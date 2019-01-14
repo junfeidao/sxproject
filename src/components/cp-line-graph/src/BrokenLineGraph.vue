@@ -12,6 +12,12 @@ export default {
       default: function() {
         return []
       }
+    },
+    day: {
+      type: Array,
+      default: function() {
+        return []
+      }
     }
   },
   watch: {
@@ -23,7 +29,6 @@ export default {
   mounted() {
     // 在渲染的时候，绘图和挂载根节点
     this.myChart = echarts.init(this.$el)
-    console.log("tag", this.$el)
     this.draw()
   },
   methods: {
@@ -34,15 +39,7 @@ export default {
         tooltip: {},
         xAxis: {
           name: "星期几",
-          data: [
-            "星期一",
-            "星期二",
-            "星期三",
-            "星期四",
-            "星期五",
-            "星期六",
-            "星期天"
-          ]
+          data: this.day
         }, // xAxis表示x轴
         yAxis: {
           name: "气温",

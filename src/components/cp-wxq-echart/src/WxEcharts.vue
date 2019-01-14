@@ -5,17 +5,22 @@
 var echarts = require("echarts")
 export default {
   props: {
-    kind: {
+    saleCount: {
       type: Array,
       default() {
         return []
       }
     },
-    salecount: {
+    kind: {
       type: Array,
       default() {
         return []
       }
+    }
+  },
+  watch: { // computed触发后需要重新渲染图表,这里的监听会在编辑时就触发，不太好，编辑结束以后再触发更好
+    saleCount() {
+      this.draw()
     }
   },
   mounted() {
@@ -24,7 +29,7 @@ export default {
   },
   methods: {
     initChart() {
-      this.myChart = echarts.init(this.$el) // 初始化并绑定容器之前时用JS绑定id，
+      this.myChart = echarts.init(this.$el) // 初始化并绑定容器，之前时用JS绑定id，
       // 但是用this.$el,组件的复用性更好,$el是vue实例使用的根DOM元素
     },
     draw() {
@@ -46,7 +51,7 @@ export default {
         series: [{
           name: '销量',
           type: 'bar',
-          data: this.salecount
+          data: this.saleCount
         }]
       }
       this.myChart.setOption(options)
