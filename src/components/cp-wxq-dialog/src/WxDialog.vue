@@ -12,22 +12,27 @@
       width="30%"
       :before-close="handleClose"
     >
-      <ElForm :inline="true">
-        <ElFormItem label="种类">
+      <ElForm
+        ref="ruleForm"
+        :inline="true"
+        :model="ruleForm"
+        :rules="rules"
+      >
+        <ElFormItem label="种类" prop="kind">
           <ElInput
-            v-model="kind"
+            v-model="ruleForm.kind"
             size="mini"
           />
         </ElFormItem>
-        <ElFormItem label="销量">
+        <ElFormItem label="销量" prop="saleCount">
           <ElInput
-            v-model="saleCount"
+            v-model.number="ruleForm.saleCount"
             size="mini"
           />
         </ElFormItem>
       </ElForm>
       <span slot="footer" class="dialog-footer">
-        <ElButton @click="show = false">
+        <ElButton @click="cancel()">
           取 消
         </ElButton>
         <ElButton type="primary" @click="handleSubmit()">
@@ -51,41 +56,44 @@ export default {
   data() {
     return {
       show: false,
-      kind: '',
-      saleCount: ''
+      ruleForm: {
+        kind: '',
+        saleCount: ''
+      },
+      rules: {
+        kind: [
+          { required: true, message: '请输入种类', trigger: 'blur' },
+          { type: 'string', message: '请输入文字', trigger: 'blur' }
+        ],
+        saleCount: [
+          { required: true, message: '请输入销量', trigger: 'blur' },
+          { type: 'number', message: '请输入整数', trigger: 'blur' }
+        ]
+      }
     }
   },
   methods: {
     handleSubmit() {
-      this.validation()
-      if (this.kind !== '' && this.saleCount !== '') {
-        this.tableData.push({ kind: this.kind, saleCount: this.saleCount })
-        this.show = false
+      if (this.ruleForm.kind !== '' && this.ruleForm.saleCount !== '') {
+        this.tableData.push({ kind: this.ruleForm.kind, saleCount: this.ruleForm.saleCount })
       }
-      this.kind = ''
-      this.saleCount = ''
+      this.ruleForm.kind = ''
+      this.ruleForm.saleCount = ''
+      this.show = false
     },
     cancel() {
       this.show = false
-      this.kind = ''
-      this.saleCount = ''
+      this.ruleForm.kind = ''
+      this.ruleForm.saleCount = ''
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
         .then(_ => {
           done()
-          this.kind = ''
-          this.saleCount = ''
+          this.ruleForm.kind = ''
+          this.ruleForm.saleCount = ''
         })
         .catch(_ => {})
-    },
-    validation() {
-      if (this.kind === '') {
-        alert('种类不能为空')
-      }
-      if (this.saleCount === '') {
-        alert('销量不能为空')
-      }
     }
   }
 }
