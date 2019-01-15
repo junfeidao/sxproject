@@ -45,10 +45,10 @@ export default {
   methods: {
     handleInput(event) {
       event.stopPropagation()
-      var name = this.name
-      var volume = this.volume
       if (this.name !== '' && this.volume !== '') {
-        this.$emit('handleInput', { name, volume })
+        this.$emit('handleInput', this.name, this.volume)
+        this.name = ''
+        this.volume = ''
         this.isEdit = true
       }
     }
