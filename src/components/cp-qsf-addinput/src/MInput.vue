@@ -66,9 +66,7 @@ export default {
   },
   methods: {
     handleInput() {
-      if (this.name === '' || this.volume === '' || !/^\d+$/.test(this.volume)) {
-        this.isPrompt = true
-      } else {
+      if (this.name !== '' || this.volume !== '' || /^\d+$/.test(this.volume)) {
         this.$emit('handleInput', this.name, this.volume)
         this.name = ''
         this.volume = ''
@@ -79,7 +77,6 @@ export default {
       this.name = ''
       this.volume = ''
       this.isEdit = true
-      this.isPrompt = false
     }
   }
 }
