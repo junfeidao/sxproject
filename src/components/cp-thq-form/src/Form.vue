@@ -48,11 +48,15 @@ export default {
   },
   methods: {
     submitForm() {
-      this.tableData.push({
-        name: this.name,
-        number: this.number
-      })
-      this.visible = false
+      if (this.name === '') {
+        alert('请输入商品名称')
+      } else {
+        this.tableData.push({
+          name: this.name,
+          number: this.number
+        })
+        this.visible = false
+      }
     },
     resetForm() {
       this.visible = false
