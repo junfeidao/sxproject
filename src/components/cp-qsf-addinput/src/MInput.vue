@@ -6,17 +6,19 @@
         v-model="name"
         type="text"
         class="leftinp"
+        clearable
       >
       <input
         v-model="volume"
         type="text"
         class="rightinp"
+        clearable
       >
       <ElButton
         type="primary"
         size="small"
         round
-        @click="handleInput"
+        @click.stop="handleInput"
       >
         确定
       </ElButton>
@@ -24,7 +26,7 @@
         type="danger"
         size="small"
         round
-        @click.stop="isEdit=true"
+        @click.stop="reviewInput"
       >
         取消
       </ElButton>
@@ -43,14 +45,18 @@ export default {
     }
   },
   methods: {
-    handleInput(event) {
-      event.stopPropagation()
+    handleInput() {
       if (this.name !== '' && this.volume !== '') {
         this.$emit('handleInput', this.name, this.volume)
         this.name = ''
         this.volume = ''
         this.isEdit = true
       }
+    },
+    reviewInput() {
+      this.name = ''
+      this.volume = ''
+      this.isEdit = true
     }
   }
 }
