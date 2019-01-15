@@ -51,7 +51,7 @@ export default {
       if (this.name === '' || this.volume === '') {
         this.isPrompt = true
       }
-      if (this.name !== '' && this.volume !== '') {
+      if (this.name !== '' && this.volume !== '' && /^\d+$/.test(this.volume)) {
         this.$emit('handleInput', this.name, this.volume)
         this.name = ''
         this.volume = ''
