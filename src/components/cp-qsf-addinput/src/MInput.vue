@@ -46,17 +46,33 @@ export default {
       volume: ''
     }
   },
+  computed: {
+    address() {
+      var name = this.name
+      var volume = this.volume
+      return {
+        name, volume
+      }
+    }
+  },
+  watch: {
+    address() {
+      if (this.name === '' || this.volume === '' || !/^\d+$/.test(this.volume)) {
+        this.isPrompt = true
+      } else {
+        this.isPrompt = false
+      }
+    }
+  },
   methods: {
     handleInput() {
-      if (this.name === '' || this.volume === '') {
+      if (this.name === '' || this.volume === '' || !/^\d+$/.test(this.volume)) {
         this.isPrompt = true
-      }
-      if (this.name !== '' && this.volume !== '' && /^\d+$/.test(this.volume)) {
+      } else {
         this.$emit('handleInput', this.name, this.volume)
         this.name = ''
         this.volume = ''
         this.isEdit = true
-        this.isPrompt = false
       }
     },
     reviewInput() {
