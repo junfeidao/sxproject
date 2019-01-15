@@ -27,7 +27,7 @@
         </ElFormItem>
       </ElForm>
       <span slot="footer" class="dialog-footer">
-        <ElButton @click="show = false">
+        <ElButton @click="cancel()">
           取 消
         </ElButton>
         <ElButton type="primary" @click="handleSubmit()">
