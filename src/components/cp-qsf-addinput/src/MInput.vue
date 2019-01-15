@@ -2,8 +2,16 @@
   <div class="Inp" @click="isEdit=false">
     <i v-if="isEdit" class="el-icon-circle-plus" />
     <div v-else class="box">
-      <input ref="name" type="text" class="leftinp">
-      <input ref="volume" type="text" class="rightinp">
+      <input
+        v-model="name"
+        type="text"
+        class="leftinp"
+      >
+      <input
+        v-model="volume"
+        type="text"
+        class="rightinp"
+      >
       <ElButton
         type="primary"
         size="small"
@@ -29,15 +37,17 @@ export default {
   name: 'Inp',
   data() {
     return {
-      isEdit: true
+      isEdit: true,
+      name: '',
+      volume: ''
     }
   },
   methods: {
     handleInput(event) {
       event.stopPropagation()
-      var name = this.$refs.name.value
-      var volume = this.$refs.volume.value
-      if (name !== '' && volume !== '') {
+      var name = this.name
+      var volume = this.volume
+      if (this.name !== '' && this.volume !== '') {
         this.$emit('handleInput', { name, volume })
         this.isEdit = true
       }
