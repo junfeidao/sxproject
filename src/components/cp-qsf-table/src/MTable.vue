@@ -1,13 +1,13 @@
 <template>
-  <ElTable :data="tableData" class="tab">
-    <ElTableColumn label="种类" width="130">
+  <ElTable :data="tableData" class="Tab">
+    <ElTableColumn label="种类" width="100">
       <template slot-scope="scope">
         <span style="margin-left: 10px">
           {{ scope.row.name }}
         </span>
       </template>
     </ElTableColumn>
-    <ElTableColumn label="销量" width="130">
+    <ElTableColumn label="销量" width="100">
       <template slot-scope="scope">
         <span
           v-if="!status[scope.$index].isEdit"
@@ -25,7 +25,7 @@
         >
       </template>
     </ElTableColumn>
-    <ElTableColumn label="操作">
+    <ElTableColumn label="操作" width="100">
       <template slot-scope="scope">
         <ElButton
           v-if="!status[scope.$index].isEdit"
@@ -94,14 +94,8 @@ export default {
 </script>
 
 <style>
-.tab {
-    width: 430px;
-    height: 500px;
-    position: absolute;
-    top: 100px;
-    right: 80px;
-}
-input {
-  width: 30px;
+.Tab {
+  width: 300px;
 }
 </style>
+
