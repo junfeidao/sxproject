@@ -27,7 +27,7 @@
         </ElFormItem>
       </ElForm>
       <span slot="footer" class="dialog-footer">
-        <ElButton @click="show = false">
+        <ElButton @click="cancel()">
           取 消
         </ElButton>
         <ElButton type="primary" @click="handleSubmit()">
@@ -55,12 +55,17 @@ export default {
       saleCount: ''
     }
   },
-  computed: {
-
-  },
   methods: {
     handleSubmit() {
-      this.tableData.push({ kind: this.kind, saleCount: this.saleCount })
+      this.validation()
+      if (this.kind !== '' && this.saleCount !== '') {
+        this.tableData.push({ kind: this.kind, saleCount: this.saleCount })
+        this.show = false
+      }
+      this.kind = ''
+      this.saleCount = ''
+    },
+    cancel() {
       this.show = false
       this.kind = ''
       this.saleCount = ''
@@ -69,8 +74,18 @@ export default {
       this.$confirm('确认关闭？')
         .then(_ => {
           done()
+          this.kind = ''
+          this.saleCount = ''
         })
         .catch(_ => {})
+    },
+    validation() {
+      if (this.kind === '') {
+        alert('种类不能为空')
+      }
+      if (this.saleCount === '') {
+        alert('销量不能为空')
+      }
     }
   }
 }

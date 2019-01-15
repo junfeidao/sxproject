@@ -25,7 +25,7 @@
         >
       </template>
     </ElTableColumn>
-    <ElTableColumn label="操作" width="100">
+    <ElTableColumn label="操作" width="150">
       <template slot-scope="scope">
         <ElButton
           v-if="!status[scope.$index].isEdit"
@@ -42,6 +42,13 @@
           @click="submitValue(scope.$index)"
         >
           确定
+        </ElButton>
+        <ElButton
+          size="mini"
+          type="danger"
+          @click="delTab(scope.$index)"
+        >
+          删除
         </ElButton>
       </template>
     </ElTableColumn>
@@ -88,6 +95,9 @@ export default {
     },
     changeInput(index) {
       this.status[index].isEdit = false
+    },
+    delTab(index) {
+      this.$emit('deleteTabline', index)
     }
   }
 }
@@ -95,7 +105,7 @@ export default {
 
 <style>
 .Tab {
-  width: 300px;
+  width: 350px;
 }
 </style>
 
