@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     handleInput() {
-      if (this.name !== '' || this.volume !== '' || /^\d+$/.test(this.volume)) {
+      if (this.name !== '' && this.volume !== '' && /^\d+$/.test(this.volume)) {
         this.$emit('handleInput', this.name, this.volume)
         this.name = ''
         this.volume = ''
@@ -84,7 +84,7 @@ export default {
 
 <style>
 .Inp {
-  width: 300px;
+  width: 350px;
   height: 50px;
   border-bottom: 1px #eee;
   border-style: none none solid none;

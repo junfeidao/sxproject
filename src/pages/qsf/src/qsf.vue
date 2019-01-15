@@ -2,7 +2,7 @@
   <div class="home">
     <MChart :value="chartData" :chartname="chartName" />
     <div class="tab">
-      <MTable :table-data="tableData" @change="handleTableChange" />
+      <MTable :table-data="tableData" @change="handleTableChange" @deleteTabline="delTab" />
       <MInput @handleInput="handleInput" />
     </div>
   </div>
@@ -74,6 +74,9 @@ export default {
       if (this.tableData.length < 13) {
         this.tableData.push({ 'name': name, 'volume': volume })
       }
+    },
+    delTab(index) {
+      this.tableData.splice(index, 1)
     }
   }
 }
