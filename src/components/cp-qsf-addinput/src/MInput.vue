@@ -6,13 +6,11 @@
         v-model="name"
         type="text"
         class="leftinp"
-        clearable
       >
       <input
         v-model="volume"
         type="text"
         class="rightinp"
-        clearable
       >
       <ElButton
         type="primary"
@@ -30,6 +28,9 @@
       >
         取消
       </ElButton>
+      <p v-if="isPrompt">
+        请输入正确格式
+      </p>
     </div>
   </div>
 </template>
@@ -40,23 +41,29 @@ export default {
   data() {
     return {
       isEdit: true,
+      isPrompt: false,
       name: '',
       volume: ''
     }
   },
   methods: {
     handleInput() {
+      if (this.name === '' || this.volume === '') {
+        this.isPrompt = true
+      }
       if (this.name !== '' && this.volume !== '') {
         this.$emit('handleInput', this.name, this.volume)
         this.name = ''
         this.volume = ''
         this.isEdit = true
+        this.isPrompt = false
       }
     },
     reviewInput() {
       this.name = ''
       this.volume = ''
       this.isEdit = true
+      this.isPrompt = false
     }
   }
 }
@@ -88,6 +95,10 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%)
+}
+p {
+  color: red;
+  font-size: 12px;
 }
 </style>
 
