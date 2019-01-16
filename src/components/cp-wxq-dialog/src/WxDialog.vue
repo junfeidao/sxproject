@@ -12,20 +12,35 @@
       width="30%"
       :before-close="handleClose"
     >
-      <ElForm :inline="true">
-        <ElFormItem label="种类">
+      <ElForm
+        ref="ruleForm"
+        :inline="true"
+        :model="ruleForm"
+        :rules="rules"
+        status-icon
+      >
+        <ElFormItem label="种类" prop="kind">
           <ElInput
-            v-model="kind"
+            v-model.number="ruleForm.kind"
             size="mini"
           />
         </ElFormItem>
-        <ElFormItem label="销量">
+        <ElFormItem label="销量" prop="saleCount">
           <ElInput
-            v-model="saleCount"
+            v-model.number="ruleForm.saleCount"
             size="mini"
           />
+        </ElFormItem>
+        <ElFormItem>
+          <ElButton @click="resetForm('ruleForm')">
+            取 消
+          </ElButton>
+          <ElButton type="primary" @click="submitForm('ruleForm')">
+            确 定
+          </ElButton>
         </ElFormItem>
       </ElForm>
+<<<<<<< HEAD
       <span slot="footer" class="dialog-footer">
         <ElButton @click="cancel()">
           取 消
@@ -34,6 +49,8 @@
           确 定
         </ElButton>
       </span>
+=======
+>>>>>>> feature/wxq
     </ElDialog>
   </div>
 </template>
@@ -51,41 +68,46 @@ export default {
   data() {
     return {
       show: false,
-      kind: '',
-      saleCount: ''
+      ruleForm: {
+        kind: '',
+        saleCount: ''
+      },
+      rules: {
+        kind: [
+          { required: true, message: '请输入种类', trigger: 'blur' },
+          { type: 'string', message: '请输入文字', trigger: 'blur' }
+        ],
+        saleCount: [
+          { required: true, message: '请输入销量', trigger: 'blur' },
+          { type: 'number', message: '请输入整数', trigger: 'blur' }
+        ]
+      }
     }
   },
   methods: {
-    handleSubmit() {
-      this.validation()
-      if (this.kind !== '' && this.saleCount !== '') {
-        this.tableData.push({ kind: this.kind, saleCount: this.saleCount })
-        this.show = false
-      }
-      this.kind = ''
-      this.saleCount = ''
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.tableData.push({ kind: this.ruleForm.kind, saleCount: this.ruleForm.saleCount })
+          this.show = false
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
     },
-    cancel() {
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
       this.show = false
-      this.kind = ''
-      this.saleCount = ''
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
         .then(_ => {
           done()
-          this.kind = ''
-          this.saleCount = ''
+          this.ruleForm.kind = ''
+          this.ruleForm.saleCount = ''
         })
         .catch(_ => {})
-    },
-    validation() {
-      if (this.kind === '') {
-        alert('种类不能为空')
-      }
-      if (this.saleCount === '') {
-        alert('销量不能为空')
-      }
     }
   }
 }
@@ -94,6 +116,5 @@ export default {
     .addbtn {
     width: 360px;
     height: 50px;
-    float: left;
   }
 </style>
