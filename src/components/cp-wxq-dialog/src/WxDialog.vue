@@ -21,7 +21,7 @@
       >
         <ElFormItem label="种类" prop="kind">
           <ElInput
-            v-model="ruleForm.kind"
+            v-model.number="ruleForm.kind"
             size="mini"
           />
         </ElFormItem>
