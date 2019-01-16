@@ -1,30 +1,32 @@
 <template>
-  <ElTable
-    :data="tableData"
-    class="tb-edit"
-    highlight-current-row
-    style="width: 100%"
-  >
-    <ElTableColumn label="种类" width="180">
-      <template slot-scope="scope">
-        <span>
-          {{ scope.row.kind }}
-        </span>
-      </template>
-    </ElTableColumn>
-    <ElTableColumn label="销量" width="180">
-      <template slot-scope="scope">
-        <ElInput
-          v-model="scope.row.saleCount"
-          class="edit-cell"
-          size="small"
-          @change="handleEdit(scope.$index,scope.row)"
-        /> <span style="margin-left: 10px">
-          {{ scope.row.saleCount }}
-        </span>
-      </template>
-    </ElTableColumn>
-  </ElTable>
+  <div>
+    <ElTable
+      :data="tableData"
+      class="tb-edit"
+      highlight-current-row
+      style="width: 100%"
+    >
+      <ElTableColumn label="种类" width="180">
+        <template slot-scope="scope">
+          <span>
+            {{ scope.row.kind }}
+          </span>
+        </template>
+      </ElTableColumn>
+      <ElTableColumn label="销量" width="180">
+        <template slot-scope="scope">
+          <ElInput
+            v-model="scope.row.saleCount"
+            class="edit-cell"
+            size="small"
+            @change="handleEdit(scope.$index,scope.row)"
+          /> <span style="margin-left: 10px">
+            {{ scope.row.saleCount }}
+          </span>
+        </template>
+      </ElTableColumn>
+    </ElTable>
+  </div>
 </template>
 
 <script>

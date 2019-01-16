@@ -1,5 +1,5 @@
 <template>
-  <div class="cha" />
+  <div class="Cha" />
 </template>
 <script >
 // 引入echarts
@@ -8,6 +8,12 @@ var echarts = require("echarts")
 export default {
   props: {
     value: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    chartname: {
       type: Array,
       default() {
         return []
@@ -40,8 +46,8 @@ export default {
           data: ['销量']
         },
         xAxis: {
-          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-          name: '种类'
+          name: '种类',
+          data: this.chartname
         },
         yAxis: {
           name: '销量'
@@ -60,11 +66,11 @@ export default {
 </script>
 
 <style>
-  .cha {
-    width: 600px;
+  .Cha {
+    width: 800px;
     height: 400px;
     position: relative;
-    left: 50px;
-    top: 100px
+    left: 0;
+    top: 50px;
   }
 </style>
