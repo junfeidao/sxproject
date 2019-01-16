@@ -17,6 +17,7 @@
         :inline="true"
         :model="ruleForm"
         :rules="rules"
+        status-icon
       >
         <ElFormItem label="种类" prop="kind">
           <ElInput
@@ -30,15 +31,15 @@
             size="mini"
           />
         </ElFormItem>
+        <ElFormItem>
+          <ElButton @click="resetForm('ruleForm')">
+            取 消
+          </ElButton>
+          <ElButton type="primary" @click="submitForm('ruleForm')">
+            确 定
+          </ElButton>
+        </ElFormItem>
       </ElForm>
-      <span slot="footer" class="dialog-footer">
-        <ElButton @click="cancel()">
-          取 消
-        </ElButton>
-        <ElButton type="primary" @click="handleSubmit()">
-          确 定
-        </ElButton>
-      </span>
     </ElDialog>
   </div>
 </template>
@@ -73,18 +74,20 @@ export default {
     }
   },
   methods: {
-    handleSubmit() {
-      if (this.ruleForm.kind !== '' && this.ruleForm.saleCount !== '') {
-        this.tableData.push({ kind: this.ruleForm.kind, saleCount: this.ruleForm.saleCount })
-      }
-      this.ruleForm.kind = ''
-      this.ruleForm.saleCount = ''
-      this.show = false
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.tableData.push({ kind: this.ruleForm.kind, saleCount: this.ruleForm.saleCount })
+          this.show = false
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
     },
-    cancel() {
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
       this.show = false
-      this.ruleForm.kind = ''
-      this.ruleForm.saleCount = ''
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
@@ -102,6 +105,5 @@ export default {
     .addbtn {
     width: 360px;
     height: 50px;
-    float: left;
   }
 </style>
