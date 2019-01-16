@@ -81,8 +81,8 @@ console.log(alexChanged); // { name: 'Alex', age: 25 }
 ```javascript
 
 function changeAgeAndReference(person) {//2.地址传入函数
-    person.age = 25;  //更改地址存放对象得属性
-    person = {    // person接收了一个新的地址
+    person.age = 25;  //更改地址存放的对象的属性
+    person = {    // person接收了一个新的地址,与之前的地址断了联系，不会受到之前地址的影响了
         name: 'John',
         age: 50
     };
@@ -102,10 +102,11 @@ console.log(personObj2);  //name:John age:50
 ```javascript
 
 var obj1 = { a: 1 };
-var obj2 = obj1; //浅拷贝
+var obj2 = obj1; //浅拷贝,在给obj2用{}赋值之前，操作可以影响到obj1
+obj2.a = 3  //此时obj2的地址还是和obj一样的
 obj2 = {b:1};  //有大括号，接收新地址，所以不会影响到obj1了
-console.log(obj1)
-console.log(obj2)
+console.log(obj1) //a:3
+console.log(obj2)  //b:1
 
 ```
 
