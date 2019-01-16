@@ -13,6 +13,11 @@ export default {
       default: function() {
         return []
       }
+    }, week: {
+      type: Array,
+      default: function() {
+        return []
+      }
     }
   },
   watch: {
@@ -31,7 +36,7 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          data: this.week
         },
         yAxis: {
           type: 'value'
