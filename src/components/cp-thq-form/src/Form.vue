@@ -48,9 +48,11 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.name === "") {
-        alert('请输入商品名称')
-      } else if (/^\D+$/.test(this.number)) {
+      if (this.name === "" || /^\d+$/.test(this.name)) { // 名称不能纯数字或空
+        alert('请输入正确的名称')
+      } else if (this.number === "") { // 销量不能为空
+        alert('请输入销量')
+      } else if (/^\D+$/.test(this.number)) { // 销量只能是数字
         alert('销量框只能输入数字')
       } else {
         this.tableData.push({
