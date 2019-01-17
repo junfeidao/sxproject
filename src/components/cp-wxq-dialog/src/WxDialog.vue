@@ -40,17 +40,6 @@
           </ElButton>
         </ElFormItem>
       </ElForm>
-<<<<<<< HEAD
-      <span slot="footer" class="dialog-footer">
-        <ElButton @click="cancel()">
-          取 消
-        </ElButton>
-        <ElButton type="primary" @click="handleSubmit()">
-          确 定
-        </ElButton>
-      </span>
-=======
->>>>>>> feature/wxq
     </ElDialog>
   </div>
 </template>
