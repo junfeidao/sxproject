@@ -44,14 +44,10 @@ export default {
   },
   computed: {
     saleCount() {
-      return this.tableData.map(item => {
-        return item.saleCount
-      })
+      return this.tableData.map(item => item.saleCount)
     },
     kind() {
-      return this.tableData.map(item => {
-        return item.kind
-      })
+      return this.tableData.map(item => item.kind)
     }
   }
 }
