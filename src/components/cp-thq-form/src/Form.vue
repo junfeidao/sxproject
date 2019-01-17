@@ -48,8 +48,8 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.name === "" || /^\d+$/.test(this.name)) { // 名称不能纯数字或空
-        alert('请输入正确的名称')
+      if (this.name === "") {
+        alert('请输入名称')
       } else if (this.number === "") { // 销量不能为空
         alert('请输入销量')
       } else if (/^\D+$/.test(this.number)) { // 销量只能是数字
