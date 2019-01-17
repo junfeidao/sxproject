@@ -1,12 +1,8 @@
 <template>
   <div style="width: 400px;height:100px">
     <ElForm
-      ref="ruleForm2"
-      :model="ruleForm2"
       status-icon
-      :rules="rules2"
       label-width="100px"
-      class="demo-ruleForm"
     >
       <ElFormItem label="date">
         <ElInput v-model="date" />
@@ -42,7 +38,9 @@ export default {
     return {
       date: '',
       week: '',
-      temperature: ''
+      temperature: '',
+      ruleForm2: '',
+      rules2: ''
     }
   },
   methods: {
