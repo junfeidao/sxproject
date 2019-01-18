@@ -25,7 +25,7 @@
         </template>
       </ElTableColumn>
     </ElTable>
-    <Meinput :table-data="tableData" @out="out" />
+    <Meinput :table-data="tableData" />
   </div>
 </template>
 <script>
@@ -68,12 +68,6 @@ export default {
       this.status[index].isEdit = false
       this.tableData[index].value = this.status[index].value
       // this.$emit('change', index, this.status[index].value)
-    },
-    out(na, val) {
-      this.tableData.push({
-        name: na,
-        value: val
-      })
     }
   }
 }
