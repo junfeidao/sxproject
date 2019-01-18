@@ -2,13 +2,21 @@
   <div class="Inp" @click="isEdit=false">
     <i v-if="isEdit" class="el-icon-circle-plus" />
     <div v-else class="box">
-      <input ref="name" type="text" class="leftinp">
-      <input ref="volume" type="text" class="rightinp">
+      <input
+        v-model="name"
+        type="text"
+        class="leftinp"
+      >
+      <input
+        v-model="volume"
+        type="text"
+        class="rightinp"
+      >
       <ElButton
         type="primary"
         size="small"
         round
-        @click="handleInput"
+        @click.stop="handleInput"
       >
         确定
       </ElButton>
@@ -16,10 +24,13 @@
         type="danger"
         size="small"
         round
-        @click.stop="isEdit=true"
+        @click.stop="reviewInput"
       >
         取消
       </ElButton>
+      <p v-if="isPrompt">
+        请输入正确格式
+      </p>
     </div>
   </div>
 </template>
@@ -29,18 +40,43 @@ export default {
   name: 'Inp',
   data() {
     return {
-      isEdit: true
+      isEdit: true,
+      isPrompt: false,
+      name: '',
+      volume: ''
+    }
+  },
+  computed: {
+    address() {
+      var name = this.name
+      var volume = this.volume
+      return {
+        name, volume
+      }
+    }
+  },
+  watch: {
+    address() {
+      if (this.name === '' || this.volume === '' || !/^\d+$/.test(this.volume)) {
+        this.isPrompt = true
+      } else {
+        this.isPrompt = false
+      }
     }
   },
   methods: {
-    handleInput(event) {
-      event.stopPropagation()
-      var name = this.$refs.name.value
-      var volume = this.$refs.volume.value
-      if (name !== '' && volume !== '') {
-        this.$emit('handleInput', { name, volume })
+    handleInput() {
+      if (this.name !== '' && this.volume !== '' && /^\d+$/.test(this.volume)) {
+        this.$emit('handleInput', this.name, this.volume)
+        this.name = ''
+        this.volume = ''
         this.isEdit = true
       }
+    },
+    reviewInput() {
+      this.name = ''
+      this.volume = ''
+      this.isEdit = true
     }
   }
 }
@@ -48,7 +84,7 @@ export default {
 
 <style>
 .Inp {
-  width: 300px;
+  width: 350px;
   height: 50px;
   border-bottom: 1px #eee;
   border-style: none none solid none;
@@ -72,6 +108,10 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%)
+}
+p {
+  color: red;
+  font-size: 12px;
 }
 </style>
 
