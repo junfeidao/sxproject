@@ -28,9 +28,11 @@
 * `npm install -g conventional-changelog`
 * `npm install -g conventional-changelog-cli`
 
-### 3.执行npm ls -g -depth=0 检测上面两个工具是否安装成功，成功后执行下一步
+### 3.执行`npm ls -g -depth=0` 检测上面两个工具是否安装成功，成功后执行下一步
 ### 4.运行命令，使其支持Angular的commit message格式
 `commitizen init cz-conventional-changelog --save --save-exact`
-### 5.如果没有json文件可执行npm init 进行配置
-### 6.在git下执行
+### 5.如果没有json文件可执行`npm init` 进行配置
+### 6.进入要操作的项目目录执行
+`conventional-changelog -p angular -i CHANGELOG.md -s`
+### 7.如果还不成功，在git下执行
 `.echo {"path":"cz-conventional-changelog"}'>~/.czrc`
