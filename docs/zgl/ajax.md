@@ -9,18 +9,18 @@
  #### get请求(主要用来查询数据)
 ```javascript
 const hxr=new XMLHttpRequest();
-hxr.open('get','zgl.txt',true)
-hxr.send(null);
-hxr.onreadystatechange=function(){
-if(this.readystate===4){
-  if(this.status===200||this.status===304){
-    const resolut=this.responseText;
-console.log(`获取的数据为 ${resolut}`)
-}
-}else{
-alert("数据还未准备好")
-}
-}
+  hxr.open('get','zgl.txt',true)
+  hxr.send(null);
+  hxr.onreadystatechange=function(){
+    if(this.readystate===4){
+       if(this.status===200||this.status===304){
+           const resolut=this.responseText;
+          console.log(`获取的数据为 ${resolut}`)
+      }
+       }else{
+           alert("数据还未准备好")
+     }
+  }
 ```
 
 ```tex
@@ -29,19 +29,19 @@ alert("数据还未准备好")
 #### post请求（与get请求，post请求主要用来保存数据)
 ```javascript
 const hxr=new XMLHttpRequest();
-hxr.open('get','zgl.txt',true)
-hxr.send(null);
-hxr.setrequsetHeader('zgl','zgl')//request请求头必须要有，主要
-hxr.onreadystatechange=function(){
-if(this.readystate===4){
-  if(this.status===200||this.status===304){
-    const resolut=this.responseText;
-console.log(`获取的数据为 ${resolut}`)
-}
-}else{
-alert("数据还未准备好")
-}
-}
+   hxr.open('get','zgl.txt',true)
+   hxr.send(null);
+   hxr.setrequsetHeader('zgl','zgl')//request请求头必须要有，主要
+   hxr.onreadystatechange=function(){
+      if(this.readystate===4){
+         if(this.status===200||this.status===304){
+             const resolut=this.responseText;
+             console.log(`获取的数据为 ${resolut}`)
+          }
+         }else{
+   alert("数据还未准备好")
+        }
+ }
 ```
 ### 获取xml文件（xml文件不能直接获取，我们可以操作dom）
 ```javascript
@@ -49,21 +49,21 @@ const hxr=new XMLHttpRequest();
 hxr.open('get','zgl.xml',true)
 hxr.send(null);
 hxr.onreadystatechange=function(){
-if(this.readystate===4){
-  if(this.status===200||this.status===304){
-    const dom=this.responseXML;//这里与text不同，不能直接获取
-      let name=dom.getElementsByTagName('name')[0].firstChild.nodeValue;
-    let h2Node=dom.createElement('h2');
-    let aNode=domt.createElement('a');
-    let website=dom.getElementsByTagName('website')[0].firstChild.nodeValue;
-    let text=aNode.innerHTML=name;
-    aNode.href=website;
-    h2Node.appendChild(aNode);
-console.log(`获取的数据为 ${h2Node}`)
-}
-}else{
+    if(this.readystate===4){
+       if(this.status===200||this.status===304){
+          const dom=this.responseXML;//这里与text不同，不能直接获取
+          let name=dom.getElementsByTagName('name')[0].firstChild.nodeValue;
+          let h2Node=dom.createElement('h2');
+          let aNode=domt.createElement('a');
+          let website=dom.getElementsByTagName('website')[0].firstChild.nodeValue;
+          let text=aNode.innerHTML=name;
+          aNode.href=website;
+         h2Node.appendChild(aNode);
+       console.log(`获取的数据为 ${h2Node}`)
+       }
+  }else{
 alert("数据还未准备好")
-}
+       }
 }
 ```
 ```xml
@@ -81,16 +81,16 @@ hxr.open('get','zgl.tx',true)
 hxr.send(null);
 hxr.setrequsetHeader('zgl','zgl')//request请求头必须要有，主要
 hxr.onreadystatechange=function(){
-if(this.readystate===4){
-  if(this.status===200||this.status===304){
-let obj=Json.parse(this.responseText) //将json对象转为可操作的js对象
-  console.log('tag', obj)
+    if(this.readystate===4){
+       if(this.status===200||this.status===304){
+       let obj=Json.parse(this.responseText) //将json对象转为可操作的js对象
+        console.log('tag', obj)
 //打开浏览器发现其实能够发现还返回了一个json格式的数据,在文本里面
-}
-}else{
-alert("数据还未准备好")
-}
-}
+       }
+    }else{
+   alert("数据还未准备好")
+        }
+  }
 ```
 ```json
 {"zgl":{
