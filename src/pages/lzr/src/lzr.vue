@@ -1,27 +1,40 @@
 <template>
   <div class="box">
-    <Lzrline :table-data="getTemperature" />
+    <Lzrline :table-data="getTemperature" :week="getWeek" class="box-left" />
     <div>
       <ElTable :data="tableData" style="width: 100%">
         <ElTableColumn type="index" width="80" />
         <ElTableColumn prop="date" label="date" width="180" />
-        <ElTableColumn prop="week" label="week" width="180" />
+        <ElTableColumn prop="week" label="week" width="150" />
         <ElTableColumn prop="temperature" label="温度">
           <template slot-scope="cope">
             <ElInput v-model="cope.row.temperature" class="lzrinput" />
           </template>
         </ElTableColumn>
       </ElTable>
+      <ElButton v-if="isView" style="width:150px" @click="toAdd">
+        +
+      </ElButton>
+      <Lzrform
+        v-else
+        :table-data="tableData"
+        @submit="submitform"
+        @reset="resetform"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import Lzrline from '@/components/cp-lzr/broken-line-graph/index.js'
+import Lzrform from '@/components/cp-lzr/form/index.js'
+
 export default {
   components: {
-    Lzrline // es6注册组件 line:line  "broken-line" :brokenLine
+    Lzrline, // es6注册组件 line:line  "broken-line" :brokenLine
+    Lzrform
   },
+
   data() {
     return {
       tableData: [{
@@ -52,7 +65,8 @@ export default {
         date: '2018-10-30',
         week: 'Sun',
         temperature: 3
-      }]
+      }],
+      isView: true
     }
   },
   computed: {
@@ -60,13 +74,26 @@ export default {
       return this.tableData.map((item) => {
         return item.temperature
       })
+    },
+    getWeek() {
+      return this.tableData.map((item) => {
+        return item.week
+      })
     }
   },
   methods: {
     indexMethod(index) {
       return index * 2
+    },
+    toAdd() {
+      this.isView = false
+    },
+    submitform() {
+      this.isView = true
+    },
+    resetform() {
+      this.isView = true
     }
-
   }
 }
 </script>
