@@ -17,3 +17,29 @@
 ### v-if
 * 用法：
 根据表达式的值得真假条件渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建。如果元素是`<template>`，将提出它的内容作为条件块。
+### v-else
+* 用法：
+v-else是搭配v-if使用的，它必须紧跟在v-if或者v-else-if后面，否则不起作用。
+* 示例：
+```
+<a v-if="ok">yes</a>
+<a v-else>no</a>
+```
+### v-else-if
+* 用法：
+v-else-if充当v-if的else-if块，可以链式的使用多次。可以更加方便的实现switch语句。
+* 示例：
+```
+<div v-if="type==='A'">
+    A
+</div>
+<div v-if="type==='B'">
+    B
+</div>
+<div v-if="type==='C'">
+    C
+</div>
+<div v-else>
+    Not A,B,C
+</div>
+```
