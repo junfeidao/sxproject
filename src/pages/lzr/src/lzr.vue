@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="pages-lzr">
     <MLine :table-data="getTemperature" :week="getWeek" class="box-left" />
     <div>
       <ElTable :data="tableData" style="width: 100%">
@@ -12,7 +12,11 @@
           </template>
         </ElTableColumn>
       </ElTable>
-      <ElButton v-if="isView" style="width:150px" @click="toAdd">
+      <ElButton
+        v-if="isView"
+        style="width:150px"
+        @click="toAdd"
+      >
         +
       </ElButton>
       <MForm
@@ -86,10 +90,10 @@ export default {
       return index * 2
     },
     toAdd() {
-      this.isView = false
+      this.isView = !this.isView
     },
     submitform() {
-      this.isView = true
+      this.isView = !this.isView
     },
     resetform() {
       this.isView = true
@@ -98,7 +102,7 @@ export default {
 }
 </script>
 <style>
-.box{
+.pages-lzr{
   display: flex;
   flex-direction: row;
 }

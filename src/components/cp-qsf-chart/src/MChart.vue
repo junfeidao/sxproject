@@ -1,5 +1,5 @@
 <template>
-  <div class="Cha" />
+  <div class="cp-qsf-chart" />
 </template>
 <script >
 // 引入echarts
@@ -65,8 +65,8 @@ export default {
 }
 </script>
 
-<style>
-  .Cha {
+<style lang="less">
+  .cp-qsf-chart {
     width: 800px;
     height: 400px;
     position: relative;

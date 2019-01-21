@@ -43,43 +43,41 @@ export default {
       }
     }
   },
+
   data() {
     return {
+      date: '',
+      week: '',
       numberValidateForm: {
         temperature: ''
-      },
-      date: '',
-      week: ''
+      }
+
     }
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          const date = this.date
-          const week = this.week
-          const temperature = this.numberValidateForm.temperature
-
-          this.$emit('obj', date, week, temperature)
-          this.date = ""
-          this.week = ""
-          this.numberValidateForm.temperature = ""
-          alert('submit!')
+          // const date = this.date
+          // const week = this.week
+          // const temperature = this.numberValidateForm.temperature
+          this.tableData.push({
+            date: this.date,
+            week: this.week,
+            temperature: this.numberValidateForm.temperature
+          })
+          // this.$emit('sub', { date, week, temperature })
+          // this.date = ""
+          // this.week = ""
+          // this.numberValidateForm.temperature = ""
+          alert('添加成功')
         } else {
-          console.log('error submit!!')
+          alert('添加失败')
           return false
         }
       })
       this.$emit('sub')
     },
-    // submitForm() {
-    //   this.tableData.push({
-    //     date: this.date,
-    //     week: this.week,
-    //     temperature: this.temperature
-    //   })
-    //
-    // },
     resetForm() {
       this.$emit('reset')
     }

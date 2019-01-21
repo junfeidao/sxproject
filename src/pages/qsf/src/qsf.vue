@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="qsf">
     <MChart :value="chartData" :chartname="chartName" />
-    <div class="tab">
+    <div class="qsf-tab">
       <MTable :table-data="tableData" @change="handleTableChange" @deleteTabline="delTab" />
       <MInput @handleInput="handleInput" />
     </div>
@@ -14,7 +14,7 @@ import MTable from "@/components/cp-qsf-table/index.js"
 import MInput from "@/components/cp-qsf-addinput/index.js"
 
 export default {
-  name: "Home",
+  name: "Qsf",
   components: {
     MChart,
     MTable,
@@ -82,12 +82,15 @@ export default {
 }
 </script>
 
-<style>
-.tab {
-  width: 430px;
-  height: 500px;
-  position: absolute;
-  top: 0;
-  right: 0;
+<style lang="less">
+.qsf {
+  .qsf-tab {
+    width: 430px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
+
 </style>
