@@ -1,14 +1,16 @@
 <template>
-  <div class="Inp" @click="isEdit=false">
-    <i v-if="isEdit" class="el-icon-circle-plus" />
-    <div v-else class="box">
+  <div class="cp-qsf-addinput">
+    <div v-if="isEdit" class="addInput" @click="isEdit=false">
+      <i class="el-icon-circle-plus" />
+    </div>
+    <div v-else class="myForm">
       <input
         v-model="name"
         type="text"
         class="leftinp"
       >
       <input
-        v-model="volume"
+        v-model.number="volume"
         type="text"
         class="rightinp"
       >
@@ -16,7 +18,7 @@
         type="primary"
         size="small"
         round
-        @click.stop="handleInput"
+        @click.stop="handleInput(name, volume)"
       >
         确定
       </ElButton>
@@ -28,16 +30,16 @@
       >
         取消
       </ElButton>
-      <p v-if="isPrompt">
-        请输入正确格式
-      </p>
     </div>
+    <p v-if="isPrompt">
+      请输入正确格式
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Inp',
+  name: 'CpQsfAddinput',
   data() {
     return {
       isEdit: true,
@@ -57,7 +59,7 @@ export default {
   },
   watch: {
     address() {
-      if (this.name === '' || this.volume === '' || !/^\d+$/.test(this.volume)) {
+      if (this.name === '' || this.volume === '' || isNaN(this.volume)) {
         this.isPrompt = true
       } else {
         this.isPrompt = false
@@ -65,9 +67,9 @@ export default {
     }
   },
   methods: {
-    handleInput() {
-      if (this.name !== '' && this.volume !== '' && /^\d+$/.test(this.volume)) {
-        this.$emit('handleInput', this.name, this.volume)
+    handleInput(name, volume) {
+      if (name !== '' && volume !== '' && !isNaN(volume)) {
+        this.$emit('handleInput', name, volume)
         this.name = ''
         this.volume = ''
         this.isEdit = true
@@ -77,41 +79,45 @@ export default {
       this.name = ''
       this.volume = ''
       this.isEdit = true
+      this.isPrompt = false
     }
   }
 }
 </script>
 
-<style>
-.Inp {
+<style lang="less">
+.cp-qsf-addinput {
   width: 350px;
   height: 50px;
   border-bottom: 1px #eee;
   border-style: none none solid none;
-  padding-top: 10px;
   position: relative;
-}
-.leftinp {
-  width: 50px;
-  height: 30px;
-  float: left;
-  margin-left: 20px;
-}
-.rightinp {
-  width: 30px;
-  height: 30px;
-  float: left;
-  margin-left: 40px;
-  margin-right: 30px;
-}
-.el-icon-circle-plus {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%)
-}
-p {
-  color: red;
-  font-size: 12px;
+  .addInput {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .myForm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .leftinp {
+      width: 50px;
+      height: 30px;
+    }
+    .rightinp {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  p {
+      color: red;
+      font-size: 12px;
+    }
 }
 </style>
 

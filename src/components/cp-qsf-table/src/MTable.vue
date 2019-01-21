@@ -1,5 +1,5 @@
 <template>
-  <ElTable :data="tableData" class="Tab">
+  <ElTable :data="tableData" class="cp-qsf-table">
     <ElTableColumn label="种类" width="100">
       <template slot-scope="scope">
         <span style="margin-left: 10px">
@@ -103,8 +103,8 @@ export default {
 }
 </script>
 
-<style>
-.Tab {
+<style lang="less">
+.cp-qsf-table {
   width: 350px;
 }
 </style>
