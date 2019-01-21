@@ -131,6 +131,10 @@ export default {
       this.tableData[index].temp = this.status[index].value
     },
     getObj(city, day, temp) {
+      console.log('city', city)
+      console.log('day', day)
+      console.log('temp', temp)
+
       const obj = {
         city: city,
         day: day,

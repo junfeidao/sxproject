@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cp-thq-form">
     <div class="Add" @click="toAdd">
       +
     </div>
@@ -52,7 +52,7 @@ export default {
         alert('请输入名称')
       } else if (this.number === "") { // 销量不能为空
         alert('请输入销量')
-      } else if (/^\D+$/.test(this.number)) { // 销量只能是数字
+      } else if (!/^\d+$/.test(this.number)) { // 销量只能是数字
         alert('销量框只能输入数字')
       } else {
         this.tableData.push({
@@ -71,3 +71,14 @@ export default {
   }
 }
 </script>
+<style>
+.cp-thq-form .Add{
+     height: 45px;
+     color: #606266;
+     border-bottom: 1px solid #ebeef5;
+     font-size: 25px;
+     line-height: 45px;
+     cursor: pointer;
+   }
+</style>
+
