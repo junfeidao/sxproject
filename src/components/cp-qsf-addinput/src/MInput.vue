@@ -63,13 +63,15 @@ export default {
       var name = this.name
       var volume = this.numberValidateForm.volume
       this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$emit('handleInput', name, volume)
-          this.$refs[formName].resetFields()
-          this.name = ''
-          this.isEdit = true
+        if (name !== '') {
+          if (valid) {
+            this.$emit('handleInput', name, volume)
+            this.$refs[formName].resetFields()
+            this.name = ''
+            this.isEdit = true
           // alert('submit!')
           // console.log(name, volume)
+          }
         }
       })
     },
