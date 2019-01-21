@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cp-wxq-dialog">
     <ElButton
       class="addbtn"
       type="primary"
@@ -102,8 +102,8 @@ export default {
 }
 </script>
 <style>
-    .addbtn {
-    width: 360px;
+  .cp-wxq-dialog .addbtn {
+    width: 100%;
     height: 50px;
   }
 </style>

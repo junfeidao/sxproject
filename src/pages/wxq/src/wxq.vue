@@ -1,5 +1,5 @@
 <template>
-  <div class="home" style="display:flex;align-items:center">
+  <div class="cp-wxq-home">
     <WxEcharts :sale-count="saleCount" :kind="kind" />
     <div class="wrap">
       <WxTable :table-data="tableData" />
@@ -53,9 +53,17 @@ export default {
 }
 </script>
 
-<style>
-  .wrap {
-    display: flex;
-    flex-direction: column
+<style lang="less">
+  .cp-wxq-home{
+    width: 100%;
+    display:flex;
+    align-items:center;
+    top: 20%;
+   .wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 </style>
+

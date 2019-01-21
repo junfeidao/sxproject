@@ -28,7 +28,8 @@
 
 ### vue指令
 
-v-model 在使用时会默认把数字转换成string类型，可以加上修饰符.number解决。
+* v-model 在使用时会默认把数字转换成string类型，可以加上修饰符.number解决。
+* v-if
 
 ### 2018/12/24对于vue一点新的的认识
 
@@ -96,5 +97,109 @@ vue-cli把项目初始化为一个git仓库，但是没有连接远程仓库。
 
 ## class与style绑定
 
-* ```<div v-bind:class="{ active: isActive }"></div>```
- 这个 class 存在与否将取决于数据属性 isActive 的 truthiness
+### 对象语法
+
+#### 最简单的情况
+
+```html
+<div v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+```
+
+#### 绑定的数据放到对象中
+
+```html
+ <div v-bind:class="classObject"></div> <!--绑定的数据对象不必内联定义在模板里,也可以放到一个对象中 -->
+ ```
+
+ ```javascript
+data: {
+  classObject: {
+    active: true,
+    'text-danger': false
+  }
+}
+```
+
+#### 绑定一个返回对象的计算属性
+
+```html
+<div v-bind:class="classObject"></div>
+```
+
+```javascript
+data: {
+  isActive: true,
+  error: null
+},
+computed: {
+  classObject: function () {
+    return {
+      active: this.isActive && !this.error,
+      'text-danger': this.error && this.error.type === 'fatal'
+    }
+  }
+}
+```
+
+有个值得注意的地方是text-danger加了引号，官方文档并没有特别说明，但是测试之后发现是'-'的原因，没有-可以不加''。否则会报错。
+
+### 数组语法
+
+#### 最简单的情况
+
+```html
+<div v-bind:class="[activeClass, errorClass]"></div>
+```
+
+```javascript
+data: {
+  activeClass: 'active',
+  errorClass: 'text-danger'
+}
+```
+
+#### 三元表达式
+
+```html
+<div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+```
+
+isActive 是 truthy时才添加 activeClass，truthy的判断方式是只要不是false、undefined、null、正负0、NaN、""这六个flase值之外的值都是truthy，在进行逻辑判断时都是true.
+
+#### 数组中使用对象
+
+```html
+<div v-bind:class="[{ active: isActive }, errorClass]"></div>
+```
+
+### 绑定内联样式
+
+#### 最简单的方式
+
+```html
+<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+```
+
+```javascript
+data: {
+  activeColor: 'red',
+  fontSize: 30
+}
+```
+
+#### 放到一个对象中
+
+```html
+<div v-bind:style="styleObject"></div>
+```
+
+```javascript
+data: {
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+}
+```
+
+### 同样的也可以结合计算属性使用
