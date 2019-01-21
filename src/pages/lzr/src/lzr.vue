@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <Lzrline :table-data="getTemperature" :week="getWeek" class="box-left" />
+    <MLine :table-data="getTemperature" :week="getWeek" class="box-left" />
     <div>
       <ElTable :data="tableData" style="width: 100%">
         <ElTableColumn type="index" width="80" />
@@ -15,7 +15,7 @@
       <ElButton v-if="isView" style="width:150px" @click="toAdd">
         +
       </ElButton>
-      <Lzrform
+      <MForm
         v-else
         :table-data="tableData"
         @sub="submitform"
@@ -26,13 +26,13 @@
 </template>
 
 <script>
-import Lzrline from '@/components/cp-lzr/broken-line-graph/index.js'
-import Lzrform from '@/components/cp-lzr/form/index.js'
+import MLine from "@/components/cp-lzr-echart/index.js"
+import MForm from "@/components/cp-lzr-form/index.js"
 
 export default {
   components: {
-    Lzrline, // es6注册组件 line:line  "broken-line" :brokenLine
-    Lzrform
+    MLine, // es6注册组件 line:line  "broken-line" :brokenLine
+    MForm
   },
 
   data() {
