@@ -14,14 +14,14 @@
         class="Minput-input"
         prop="volume"
         :rules="[
-          { required: true, message: '年龄不能为空'},
-          { type: 'number', message: '年龄必须为数字值'}
+          { required: true, message: '请输入'},
+          { type: 'number', message: '请输入数字'}
         ]"
       >
         <ElInput
           v-model="name"
           class="MInput-leftInput"
-          placeholder="请输入内容"
+          placeholder="请输入"
           clearable
         />
         <ElInput
@@ -120,6 +120,7 @@ export default {
         height: 50px;
         position: relative;
         .MInput-submit {
+          line-height: 100%;
           position: absolute;
           left: -65px;
         }
