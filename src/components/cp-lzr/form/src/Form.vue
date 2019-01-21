@@ -1,8 +1,10 @@
 <template>
   <div style="width: 400px;height:100px">
     <ElForm
+      ref="numberValidateForm"
       status-icon
       label-width="100px"
+      :model="numberValidateForm"
     >
       <ElFormItem label="date">
         <ElInput v-model="date" />
@@ -10,11 +12,18 @@
       <ElFormItem label="week">
         <ElInput v-model="week" />
       </ElFormItem>
-      <ElFormItem label="温度">
-        <ElInput v-model="temperature" />
+      <ElFormItem
+        label="年龄"
+        prop="temperature"
+        :rules="[
+          { required: true, message: '温度不能为空'},
+          { type: 'number', message: '温度必须为数字值'}
+        ]"
+      >
+        <ElInput v-model.number="numberValidateForm.temperature" type="temperature" autocomplete="off" />
       </ElFormItem>
       <ElFormItem>
-        <ElButton type="primary" @click="submitForm">
+        <ElButton type="primary" @click="submitForm('numberValidateForm')">
           提交
         </ElButton>
         <ElButton @click="resetForm">
@@ -36,22 +45,41 @@ export default {
   },
   data() {
     return {
+      numberValidateForm: {
+        temperature: ''
+      },
       date: '',
-      week: '',
-      temperature: '',
-      ruleForm2: '',
-      rules2: ''
+      week: ''
     }
   },
   methods: {
-    submitForm() {
-      this.tableData.push({
-        date: this.date,
-        week: this.week,
-        temperature: this.temperature
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          const date = this.date
+          const week = this.week
+          const temperature = this.numberValidateForm.temperature
+
+          this.$emit('obj', date, week, temperature)
+          this.date = ""
+          this.week = ""
+          this.numberValidateForm.temperature = ""
+          alert('submit!')
+        } else {
+          console.log('error submit!!')
+          return false
+        }
       })
-      this.$emit('submit')
+      this.$emit('sub')
     },
+    // submitForm() {
+    //   this.tableData.push({
+    //     date: this.date,
+    //     week: this.week,
+    //     temperature: this.temperature
+    //   })
+    //
+    // },
     resetForm() {
       this.$emit('reset')
     }

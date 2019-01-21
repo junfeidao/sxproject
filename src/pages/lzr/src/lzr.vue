@@ -18,7 +18,7 @@
       <Lzrform
         v-else
         :table-data="tableData"
-        @submit="submitform"
+        @sub="submitform"
         @reset="resetform"
       />
     </div>
