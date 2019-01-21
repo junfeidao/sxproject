@@ -1,6 +1,8 @@
 <template>
   <div style="width: 400px;height:100px">
     <ElForm
+      ref="numberValidateForm"
+      :model="numberValidateForm"
       status-icon
       label-width="100px"
     >
@@ -10,11 +12,14 @@
       <ElFormItem label="week">
         <ElInput v-model="week" />
       </ElFormItem>
-      <ElFormItem label="温度">
-        <ElInput v-model="temperature" />
+      <ElFormItem
+        label="温度"
+        prop="temperature"
+      >
+        <ElInput v-model.number="temperature" />
       </ElFormItem>
       <ElFormItem>
-        <ElButton type="primary" @click="submitForm">
+        <ElButton @click="submitForm(temperature)">
           提交
         </ElButton>
         <ElButton @click="resetForm">
@@ -38,19 +43,22 @@ export default {
     return {
       date: '',
       week: '',
-      temperature: '',
-      ruleForm2: '',
-      rules2: ''
+      temperature: ''
     }
   },
   methods: {
-    submitForm() {
-      this.tableData.push({
-        date: this.date,
-        week: this.week,
-        temperature: this.temperature
-      })
-      this.$emit('submit')
+    submitForm(formName) {
+      var date = this.date
+      var week = this.week
+      var temperature = this.temperature
+      if (!isNaN(formName)) {
+        this.tableData.push({
+          'date': date,
+          'week': week,
+          'temperature': temperature
+        })
+        this.$emit('sub')
+      }
     },
     resetForm() {
       this.$emit('reset')
