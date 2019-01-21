@@ -1,5 +1,5 @@
 <template>
-  <div id="main" style="width: 400px;height:400px;float:left;" />
+  <div style="width: 400px;height:400px;float:left;" />
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
   methods: {
     // 指定图表的配置项和数据
     draw() {
-      var myChart = echarts.init(document.getElementById("main"))
+      var myChart = echarts.init(this.$el)// 修改的地方:修改者:朱广龙
       myChart.setOption({
         title: {},
         tooltip: {
