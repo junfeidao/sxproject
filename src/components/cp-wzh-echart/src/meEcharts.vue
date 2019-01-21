@@ -26,7 +26,11 @@ export default {
   methods: {
     // 指定图表的配置项和数据
     draw() {
+<<<<<<< HEAD
       var myChart = echarts.init(this.$el)// 修改的地方:修改者:朱广龙
+=======
+      var myChart = echarts.init(this.$el)
+>>>>>>> feature/wzh
       myChart.setOption({
         title: {},
         tooltip: {
