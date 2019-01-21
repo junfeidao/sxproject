@@ -11,6 +11,7 @@
       :visible.sync="show"
       width="30%"
       :before-close="handleClose"
+      @close="resetForm('ruleForm')"
     >
       <ElForm
         ref="ruleForm"
@@ -23,16 +24,18 @@
           <ElInput
             v-model.number="ruleForm.kind"
             size="mini"
+            autocomplete="off"
           />
         </ElFormItem>
         <ElFormItem label="销量" prop="saleCount">
           <ElInput
             v-model.number="ruleForm.saleCount"
             size="mini"
+            autocomplete="off"
           />
         </ElFormItem>
         <ElFormItem>
-          <ElButton @click="resetForm('ruleForm')">
+          <ElButton @click="show = false">
             取 消
           </ElButton>
           <ElButton type="primary" @click="submitForm('ruleForm')">
@@ -87,14 +90,11 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()
-      this.show = false
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
         .then(_ => {
           done()
-          this.ruleForm.kind = ''
-          this.ruleForm.saleCount = ''
         })
         .catch(_ => {})
     }
