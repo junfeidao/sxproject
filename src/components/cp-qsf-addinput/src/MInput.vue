@@ -1,124 +1,133 @@
 <template>
   <div class="cp-qsf-addinput">
-    <div v-if="isEdit" class="addInput" @click="isEdit=false">
+    <div v-if="isEdit" class="qsf-addInput" @click="isEdit=false">
       <i class="el-icon-circle-plus" />
     </div>
-    <div v-else class="myForm">
-      <input
-        v-model="name"
-        type="text"
-        class="leftinp"
+    <ElForm
+      v-else
+      ref="numberValidateForm"
+      :model="numberValidateForm"
+      label-width="100px"
+      class="qsf-ruleForm"
+    >
+      <ElFormItem
+        class="Minput-input"
+        prop="volume"
+        :rules="[
+          { required: true, message: '年龄不能为空'},
+          { type: 'number', message: '年龄必须为数字值'}
+        ]"
       >
-      <input
-        v-model.number="volume"
-        type="text"
-        class="rightinp"
-      >
-      <ElButton
-        type="primary"
-        size="small"
-        round
-        @click.stop="handleInput(name, volume)"
-      >
-        确定
-      </ElButton>
-      <ElButton
-        type="danger"
-        size="small"
-        round
-        @click.stop="reviewInput"
-      >
-        取消
-      </ElButton>
-    </div>
-    <p v-if="isPrompt">
-      请输入数字
-    </p>
+        <ElInput
+          v-model="name"
+          class="MInput-leftInput"
+          placeholder="请输入内容"
+          clearable
+        />
+        <ElInput
+          v-model.number="numberValidateForm.volume"
+          class="MInput-rightInput"
+          type="volume"
+          autocomplete="off"
+        />
+      </ElFormItem>
+      <ElFormItem class="qsf-MInput-submit">
+        <ElButton
+          size="mini"
+          class="MInput-submit"
+          type="primary"
+          @click="submitForm('numberValidateForm')"
+        >
+          提交
+        </ElButton>
+        <ElButton size="mini" class="MInput-resubmit" @click="resetForm('numberValidateForm')">
+          取消
+        </ElButton>
+      </ElFormItem>
+    </ElForm>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'CpQsfAddinput',
   data() {
     return {
-      isEdit: true,
-      isPrompt: false,
       name: '',
-      volume: ''
-    }
-  },
-  computed: {
-    address() {
-      var name = this.name
-      var volume = this.volume
-      return {
-        name, volume
-      }
-    }
-  },
-  watch: {
-    address() {
-      if (isNaN(this.volume)) {
-        this.isPrompt = true
-      } else {
-        this.isPrompt = false
+      isEdit: true,
+      numberValidateForm: {
+        volume: ''
       }
     }
   },
   methods: {
-    handleInput(name, volume) {
-      if (name !== '' && volume !== '' && !isNaN(volume)) {
-        this.$emit('handleInput', name, volume)
-        this.name = ''
-        this.volume = ''
-        this.isEdit = true
-        this.isPrompt = false
-      }
+    submitForm(formName) {
+      var name = this.name
+      var volume = this.numberValidateForm.volume
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$emit('handleInput', name, volume)
+          this.$refs[formName].resetFields()
+          this.name = ''
+          this.isEdit = true
+          // alert('submit!')
+          // console.log(name, volume)
+        }
+      })
     },
-    reviewInput() {
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
       this.name = ''
-      this.volume = ''
       this.isEdit = true
-      this.isPrompt = false
     }
   }
 }
 </script>
-
 <style lang="less">
-.cp-qsf-addinput {
-  width: 350px;
-  height: 50px;
-  border-bottom: 1px #eee;
-  border-style: none none solid none;
-  position: relative;
-  .addInput {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .cp-qsf-addinput {
+    width: 350px;
+    height: 50px;
+    border-bottom: 1px #eee;
+    border-style: none none solid none;
+    position: relative;
+    .qsf-addInput {
+      width: 350px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .qsf-ruleForm {
+      width: 350px;
+      height: 50px;
+      display: flex;
+      justify-content: flex-start;
+      .Minput-input {
+        width: 175px;
+        height: 50px;
+        position: relative;
+        .MInput-leftInput {
+          width: 90px;
+          position: absolute;
+          left: -100px;
+        }
+        .MInput-rightInput {
+          width: 80px;
+          position: absolute;
+          right: 0;
+        }
+      }
+      .qsf-MInput-submit {
+        width: 175px;
+        height: 50px;
+        position: relative;
+        .MInput-submit {
+          position: absolute;
+          left: -65px;
+        }
+        .MInput-resubmit {
+          position: absolute;
+          right: 17px;
+        }
+      }
+    }
   }
-  .myForm {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .leftinp {
-      width: 50px;
-      height: 30px;
-    }
-    .rightinp {
-      width: 30px;
-      height: 30px;
-    }
-  }
-  p {
-      color: red;
-      font-size: 12px;
-    }
-}
 </style>
-
