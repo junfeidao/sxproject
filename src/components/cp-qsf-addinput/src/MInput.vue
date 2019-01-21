@@ -32,7 +32,7 @@
       </ElButton>
     </div>
     <p v-if="isPrompt">
-      请输入正确格式
+      请输入数字
     </p>
   </div>
 </template>
@@ -59,7 +59,7 @@ export default {
   },
   watch: {
     address() {
-      if (this.name === '' || this.volume === '' || isNaN(this.volume)) {
+      if (isNaN(this.volume)) {
         this.isPrompt = true
       } else {
         this.isPrompt = false
@@ -73,6 +73,7 @@ export default {
         this.name = ''
         this.volume = ''
         this.isEdit = true
+        this.isPrompt = false
       }
     },
     reviewInput() {
