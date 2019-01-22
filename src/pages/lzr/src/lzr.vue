@@ -9,21 +9,20 @@
         <ElTableColumn
           prop="temperature"
           label="温度"
-          width="100"
+          width="80px"
         >
           <template slot-scope="scope">
             <ElInput
               v-if="isShow"
               v-model="scope.row.temperature"
+              style="height:15px"
               size="mini"
               class="lzrinput"
               @blur="isShow=false"
-              @change="handleEdit(scope.$index,scope.row)"
             />
             <span
               v-else
-              width="15px"
-              height="55px"
+              style="margin-left:15px"
               @click.self="isinput"
             >
               {{ scope.row.temperature }}
@@ -109,9 +108,6 @@ export default {
     indexMethod(index) {
       return index * 2
     },
-    handleEdit(index) {
-      this.tableData[index]["temperature"] = index.temperature
-    },
     isinput() {
       this.isShow = !this.isShow
     },
@@ -135,5 +131,7 @@ export default {
 .lzrinput .el-input__inner{
   border:0 none;
   margin: 0 none;
+  height: 20px;
+  width: 100%;
 }
 </style>
