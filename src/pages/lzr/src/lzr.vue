@@ -1,14 +1,33 @@
 <template>
   <div class="pages-lzr">
-    <MLine :table-data="getTemperature" :week="getWeek" class="box-left" />
+    <MLine :table-data="getTemperature" :week="getWeek" />
     <div>
       <ElTable :data="tableData" style="width: 100%">
-        <ElTableColumn type="index" width="80" />
-        <ElTableColumn prop="date" label="date" width="180" />
-        <ElTableColumn prop="week" label="week" width="150" />
-        <ElTableColumn prop="temperature" label="温度">
-          <template slot-scope="cope">
-            <ElInput v-model="cope.row.temperature" class="lzrinput" />
+        <ElTableColumn type="index" width="50" />
+        <ElTableColumn prop="date" label="date" width="150" />
+        <ElTableColumn prop="week" label="week" width="120" />
+        <ElTableColumn
+          prop="temperature"
+          label="温度"
+          width="100"
+        >
+          <template slot-scope="scope">
+            <ElInput
+              v-if="isShow"
+              v-model="scope.row.temperature"
+              size="mini"
+              class="lzrinput"
+              @blur="isShow=false"
+              @change="handleEdit(scope.$index,scope.row)"
+            />
+            <span
+              v-else
+              width="15px"
+              height="55px"
+              @click.self="isinput"
+            >
+              {{ scope.row.temperature }}
+            </span>
           </template>
         </ElTableColumn>
       </ElTable>
@@ -70,7 +89,8 @@ export default {
         week: 'Sun',
         temperature: 3
       }],
-      isView: true
+      isView: true,
+      isShow: false
     }
   },
   computed: {
@@ -88,6 +108,12 @@ export default {
   methods: {
     indexMethod(index) {
       return index * 2
+    },
+    handleEdit(index) {
+      this.tableData[index]["temperature"] = index.temperature
+    },
+    isinput() {
+      this.isShow = !this.isShow
     },
     toAdd() {
       this.isView = !this.isView
@@ -108,5 +134,6 @@ export default {
 }
 .lzrinput .el-input__inner{
   border:0 none;
+  margin: 0 none;
 }
 </style>
