@@ -1,21 +1,43 @@
 <template>
-  <div class="box">
-    <Lzrline :table-data="getTemperature" :week="getWeek" class="box-left" />
+  <div class="pages-lzr">
+    <MLine :table-data="getTemperature" :week="getWeek" />
     <div>
       <ElTable :data="tableData" style="width: 100%">
-        <ElTableColumn type="index" width="80" />
-        <ElTableColumn prop="date" label="date" width="180" />
-        <ElTableColumn prop="week" label="week" width="150" />
-        <ElTableColumn prop="temperature" label="温度">
-          <template slot-scope="cope">
-            <ElInput v-model="cope.row.temperature" class="lzrinput" />
+        <ElTableColumn type="index" width="50" />
+        <ElTableColumn prop="date" label="date" width="150" />
+        <ElTableColumn prop="week" label="week" width="120" />
+        <ElTableColumn
+          prop="temperature"
+          label="温度"
+          width="80px"
+        >
+          <template slot-scope="scope">
+            <ElInput
+              v-if="isShow"
+              v-model="scope.row.temperature"
+              style="height:15px"
+              size="mini"
+              class="lzrinput"
+              @blur="isShow=false"
+            />
+            <span
+              v-else
+              style="margin-left:15px"
+              @click.self="isinput"
+            >
+              {{ scope.row.temperature }}
+            </span>
           </template>
         </ElTableColumn>
       </ElTable>
-      <ElButton v-if="isView" style="width:150px" @click="toAdd">
+      <ElButton
+        v-if="isView"
+        style="width:150px"
+        @click="toAdd"
+      >
         +
       </ElButton>
-      <Lzrform
+      <MForm
         v-else
         :table-data="tableData"
         @sub="submitform"
@@ -26,13 +48,13 @@
 </template>
 
 <script>
-import Lzrline from '@/components/cp-lzr/broken-line-graph/index.js'
-import Lzrform from '@/components/cp-lzr/form/index.js'
+import MLine from "@/components/cp-lzr-echart/index.js"
+import MForm from "@/components/cp-lzr-form/index.js"
 
 export default {
   components: {
-    Lzrline, // es6注册组件 line:line  "broken-line" :brokenLine
-    Lzrform
+    MLine, // es6注册组件 line:line  "broken-line" :brokenLine
+    MForm
   },
 
   data() {
@@ -66,7 +88,8 @@ export default {
         week: 'Sun',
         temperature: 3
       }],
-      isView: true
+      isView: true,
+      isShow: false
     }
   },
   computed: {
@@ -85,11 +108,14 @@ export default {
     indexMethod(index) {
       return index * 2
     },
+    isinput() {
+      this.isShow = !this.isShow
+    },
     toAdd() {
-      this.isView = false
+      this.isView = !this.isView
     },
     submitform() {
-      this.isView = true
+      this.isView = !this.isView
     },
     resetform() {
       this.isView = true
@@ -98,11 +124,14 @@ export default {
 }
 </script>
 <style>
-.box{
+.pages-lzr{
   display: flex;
   flex-direction: row;
 }
 .lzrinput .el-input__inner{
   border:0 none;
+  margin: 0 none;
+  height: 20px;
+  width: 100%;
 }
 </style>
