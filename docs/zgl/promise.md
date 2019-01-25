@@ -56,11 +56,11 @@ p3.then(result => console.log(result)) .catch(error => console .log(error))
 ```
 - 这是因为在执行的时候，首先过了1秒以后p3的状态会变resolve，此时p1的状态还未发生改变，由于p3依赖于p1此时就会执行p3失败，过2s以后p1的状态变为reject,此时就会被后面的catch捕获到异常
 - promise的then（）方法
-1.可以传2个参数一个是data，一个是error
-2.then（）调用的结果返回的仍然是一个promise对象，但是并不是最开始的promise对象，而是一个新的promise，因此then（）可以链式调用then（）.then(）
+1. 可以传2个参数一个是data，一个是error
+2. then（）调用的结果返回的仍然是一个promise对象，但是并不是最开始的promise对象，而是一个新的promise，因此then（）可以链式调用then（）.then(）
 - promsie 的all（）方法
- 1.只有当所有的promise的状态为resolve时，promise.all()才会为resolve
- 2.若果有一个为reject时，promise.all（）就会为reject
+ 1. 只有当所有的promise的状态为resolve时，promise.all()才会为resolve
+ 2. 若果有一个为reject时，promise.all（）就会为reject
 ```
    let arr=[1,2,3,4]
    arr.map(item=>{
@@ -71,7 +71,7 @@ p3.then(result => console.log(result)) .catch(error => console .log(error))
    })
    ```
 - promise的catch（）方法
-1.reject具有冒泡事件，最终会冒泡到catch里面
-2.catch的执行结果是一个新的promise对象，因此可以继续使用then（）
-3.catch与java的 throw new Error（）+try{}catch（e）{}异曲同工
-4.只要promise对象的状态变为reject就会被catch捕获，因此catch（）通常放在最后，用于捕获前面产生的异常
+1. reject具有冒泡事件，最终会冒泡到catch里面
+2. catch的执行结果是一个新的promise对象，因此可以继续使用then（）
+3. catch与java的 throw new Error（）+try{}catch（e）{}异曲同工
+4. 只要promise对象的状态变为reject就会被catch捕获，因此catch（）通常放在最后，用于捕获前面产生的异常
