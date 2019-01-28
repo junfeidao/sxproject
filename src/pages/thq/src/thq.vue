@@ -1,5 +1,5 @@
 <template>
-  <div class="thq box">
+  <div class="thq-box">
     <MyEcharts :data-number="chartData" :data-name="chartName" />
     <div>
       <ElTable :data="tableData" style="width: 100%">
@@ -68,7 +68,7 @@ export default {
 }
 </script>
 <style lang="less">
-.thq{
+.thq-box{
     display: flex;
     flex-direction:row;
     .thq-input {
@@ -77,13 +77,5 @@ export default {
         height:30px ;
       }
     }
-    .Add{
-     height: 45px;
-     color: #606266;
-     border-bottom: 1px solid #ebeef5;
-     font-size: 25px;
-     line-height: 45px;
-     cursor: pointer;
-   }
  }
 </style>

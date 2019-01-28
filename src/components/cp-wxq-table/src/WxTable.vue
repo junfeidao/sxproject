@@ -1,19 +1,19 @@
 <template>
-  <div>
+  <div class="cp-wxq-table">
     <ElTable
       :data="tableData"
-      class="tb-edit"
+      class="cp-edit"
       highlight-current-row
       style="width: 100%"
     >
-      <ElTableColumn label="种类" width="180">
+      <ElTableColumn label="种类" width="180px">
         <template slot-scope="scope">
           <span>
             {{ scope.row.kind }}
           </span>
         </template>
       </ElTableColumn>
-      <ElTableColumn label="销量" width="180">
+      <ElTableColumn label="销量" width="180px">
         <template slot-scope="scope">
           <ElInput
             v-model="scope.row.saleCount"
@@ -53,17 +53,26 @@ export default {
 }
 </script>
 
-<style>
-  .edit-cell {
-    width: 50px
+<style lang="less">
+.cp-wxq-table {
+  width: 100%;
+  .cp-edit {
+    width: 100%;
+    .el-input {
+      display: none
+    }
+    .edit-cell {
+      width: 50px
+    }
+    .current-row {
+      .el-input {
+        display: block
+      }
+      .el-input+span {
+        display: none
+      }
+    }
   }
-  .tb-edit .el-input {
-    display: none
-  }
-  .tb-edit .current-row .el-input {
-    display: block
-  }
-  .tb-edit .current-row .el-input+span {
-    display: none
-  }
+}
+
 </style>
