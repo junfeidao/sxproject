@@ -1,4 +1,4 @@
-﻿# Git笔记
+# Git笔记
 ## 登录Git
  * `git config --global user.email "you@example.com"`
  * `git config --global user.name "Your Name"`
