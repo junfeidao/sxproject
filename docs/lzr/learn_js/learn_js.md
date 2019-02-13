@@ -102,6 +102,9 @@ for (表达式1;表达式2;表达式3){
   循环体语句;
 }
 ```
+* 表达式1：在循环（代码块）开始前执行
+* 表达式2：定义运行循环（代码块）的条件
+* 表达式3：在循环（代码块）已被执行之后执行
 ## 8.数组
 * 内存中连续存储多个数据的数据结构，再起一个统一的名字
 ### (1)索引数组
@@ -168,3 +171,26 @@ slice()返回现有数组的一个子数组
 * if语句:只有当指定条件为true时执行
 * if...else语句:当满足if的条件时，就执行if下的代码，反之就执行else下的代码
 * if...else if...else语句:当满足if的条件时执行if下的代码，满足else if条件时执行else if下的代码,都不满足就执行else下的代码
+## 11.数字属性和方法
+* MAX VALUE:MAX_VALUE 属性是 JavaScript 中可表示的最大的数。它的近似值为 1.7976931348623157 e308。()
+* MIN VALUE:MIN_VALUE 属性是 JavaScript 中可表示的最小的数（接近 0 ，但不是负数）。它的近似值为 5 e-324。
+* Number.POSITIVE_INFINITY:正无穷
+* Number.NEGATIVE_INFINITY:负无穷
+* NaN:NaN 属性是代表非数字值的特殊值。该属性用于指示某个值不是数字。可以把 Number 对象设置为该值，来指示其不是数字值。
+* prototype:使用prototype属性向对象添加属性和方法(原型)
+* constructor:constructor 属性返回对创建此对象的数组函数的引用。（构造器）
+## 12.引用类型
+### 1.Object类型
+#### 创建Object实例的方法：
+* 使用new操作符后跟Object构造函数
+```
+var person = new Objecet ();
+person.name = "Micholas";
+person.age = 29;
+```
+* 使用对象字面量表示法（对象定义的一种简写方式，简化了创建包含大量属性的对象的过程）
+```
+var person = {
+  name : "Nicholas",
+  age : 29
+};
