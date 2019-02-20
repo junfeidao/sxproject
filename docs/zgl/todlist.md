@@ -159,7 +159,7 @@
     }
   },
   removeall(){
-   this.list="";
+   this.list;
 },
  created(){
   //如果表格中内容为空则显示暂无更多数据
