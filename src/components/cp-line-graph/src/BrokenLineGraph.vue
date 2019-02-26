@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     // 指定图表的配置项和数据
-    draw() {
+      draw() {
       this.myChart.setOption({
         title: { text: "杭州未来一个星期天气走势" },
         tooltip: {},
