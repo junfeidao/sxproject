@@ -1,0 +1,101 @@
+option = {
+     backgroundColor:{
+    type: 'linear',
+    x: 0,
+    y: 1,
+    x2: 1,
+    y2: 1,
+    colorStops: [{
+        offset: 0, color: '#0d458e' // 0% 处的颜色
+    },
+    {
+        offset: 0.5, color: '#0c376c' // 0% 处的颜色
+    },
+    {
+        offset: 1, color: '#0d458e' // 100% 处的颜色000
+    }],
+    },
+    title: {
+        text: '近30日自行解决事件趋势',
+        textStyle:{
+            color:'#3196fa'
+        }
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    color:['#3196fa'],
+    legend: {
+        data:['事件数（件）'],
+        icon: "line",
+        top:20,
+        right:50,
+        textStyle:{
+                            color: '#ffffff'//字体颜色
+                        },
+                        lineStyle:{ 
+             color:'red' //改变折线颜色
+} 
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+       data : ['30日','31日','1日','2日','3日','4日','5日','6日','7日'],
+    axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff'
+                            },
+                        } ,//字体变色
+    },
+    yAxis: {
+        type: 'value',
+        name:'个数',
+        nameGap:15,
+        max:50,
+        nameTextStyle:{
+                color:'white',
+                fontSize:'15',
+            },
+        axisLabel:{
+                textStyle:{
+                    color:'white',
+                }
+            },
+        splitLine: {
+                lineStyle: {
+                    type:'dotted',
+                    color:'white'
+                }
+                },
+                axisLine: {
+                show: false,
+            },
+    },
+    series: [
+        {
+            name:'事件数（件）',
+            type:'line',
+            symbol:'none',
+            data:[22,11,20,18,30,35,25,18,20],
+            itemStyle : { 
+              normal : {
+              lineStyle:{ 
+             color:'#3196fa' //改变折线颜色
+} 
+} 
+},
+        },
+        
+    ]
+};
